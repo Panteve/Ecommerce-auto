@@ -23,7 +23,7 @@ useUnifiedTopology: true,
   .catch((error) => console.error("Error de conexión a la BD:", error));
 
 // Rutas
-//app.use("/api", require("./routes/cliente.route"));
+app.use("/api", require("./routes/cliente.route"));
 
 // Middleware de manejo de errores
 app.use((err, res) => {
