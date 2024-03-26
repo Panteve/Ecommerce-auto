@@ -6,9 +6,9 @@ const clienteCtrl = {};
 clienteCtrl.getCliente = async (req, res) => {
     try {
         const clientes = await Cliente.find();
-        if (clientes) {
+        if (clientes && clientes.length > 0) {
             res.json(clientes);
-        } else if(!clientes) {
+        } else{
             res.json({
                 status: 'No hay clientes',
             });
