@@ -24,6 +24,7 @@ useUnifiedTopology: true,
 
 // Rutas
 app.use("/api", require("./routes/cliente.route"));
+app.use("/api", require("./routes/admin.route"));
 
 // Middleware de manejo de errores
 app.use((err, res) => {
