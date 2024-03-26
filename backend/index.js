@@ -15,16 +15,14 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:4321" }));
 
 //Conexión BD Atlas
-mongoose.connect(process.env.MONGODB_URI, {
-useNewUrlParser: true,
-useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("Conectado a la BD"))
   .catch((error) => console.error("Error de conexión a la BD:", error));
 
 // Rutas
 app.use("/api", require("./routes/cliente.route"));
 app.use("/api", require("./routes/admin.route"));
+app.use("/api", require("./routes/pedido.route"));
 
 // Middleware de manejo de errores
 app.use((err, res) => {
