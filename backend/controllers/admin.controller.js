@@ -7,7 +7,7 @@ const adminCtrl = {};
 adminCtrl.getAdmins = async (req, res) => {
     try {
         const admin = await Admin.find();
-        if (admin) {
+        if (admin && admin.length > 0) {
             res.json(admin);
         } else {
             res.json({
