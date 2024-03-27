@@ -3,16 +3,16 @@ const loginCtrl = {};
 
 loginCtrl.login = async (req, res) => {     
     try {
-        const credencialesCliente = await Cliente.findOne({
+        const cliente = await Cliente.findOne({
             $and:[
                 {documento: req.body.documento},
                 {contrasena: req.body.contrasena}
             ]
         })
     
-        if (credencialesCliente) {
+        if (cliente) {
             res.json({ cliente, log: true })
-        } else if(!credencialesCliente) {
+        } else if(!cliente) {
             res.json({
                 status: 'Credenciales incorrectas',
             });
