@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use("/api", require("./routes/cliente.route"));
 app.use("/api", require("./routes/admin.route"));
 app.use("/api", require("./routes/pedido.route"));
-
+app.use("/api", require("./routes/producto.route"));
 // Middleware de manejo de errores
 app.use((err, res) => {
   console.error(err.stack);
