@@ -36,13 +36,13 @@ clienteCtrl.createCliente = async (req, res) => {
         const data = await nuevoCliente.save();
 
         res.json({
-            'status': 'Cliente registrado',
-            'data': data
+            status: 'Cliente registrado',
+            data: data
         });
     } catch (error) {
         res.json({
-            'status': 'Error al registrar cliente',
-            'error': error.message
+            status: 'Error al registrar cliente',
+            error: error.message
         });
     }
 }
@@ -96,9 +96,8 @@ clienteCtrl.eliminarCliente = async (req, res) => {
     try {
         const clienteEliminado = await Cliente.findOneAndDelete({documento: req.params.documento});
         if (clienteEliminado) {
-            const nombre = clienteEliminado.nombre;
             res.json({
-                status: `Cliente `+nombre+` ha sido eliminado`,
+                status: `Cliente ${clienteEliminado.nombre} ha sido eliminado`,
             });
         } else if(!clienteEliminado){
             res.json({

@@ -126,24 +126,29 @@ productoCtrl.editarProductos = async (req,res)=>{
 //Eliminar Producto
 productoCtrl.eliminarProducto = async (req, res) =>{
     try{
-        const productoEliminado = await Producto.findOneAndDelete({refproducto: req.params.refproducto})
-        if (productoEliminado) {
-            res.json({
-                status: `Producto ${productoEliminado.refproducto} ha sido eliminado. (${productoEliminado.nombre})`,
+        const producto = await Producto.findOneAndDelete({ refproducto: req.params.refproducto })
+        if (!producto) {
+            return res.json({
+                status: 'Producto no encontrado para eliminar',
             });
-        } else {
+        }
+        const productoId = producto.refproducto;
+
+        if (productoId) {
+            await Proveedor.findOneAndUpdate(productoId, { $pull: { refproducto: producto.refproducto }}) 
+            res.json({
+                status: `Producto ${producto.refproducto} ha sido eliminado`,
+            });
+        }else {
             res.json({
                 status: 'Producto no encontrado para eliminar',
             });
         }
-
-    }catch(error){
+    } catch (error) {
         res.json({
             status: 'Error al eliminar el producto',
-            error: error.message
-        })
-
+            error: error.message,
+        });
     }
 }
-
 module.exports = productoCtrl
