@@ -29,7 +29,7 @@ adminCtrl.createAdmins = async (req, res) => {
         
         if (adminExistente) {
             return res.json({
-                'status': 'Admin ya existente',
+                status: 'Admin ya existente',
             });
         } 
 
@@ -37,19 +37,19 @@ adminCtrl.createAdmins = async (req, res) => {
         const data = await nuevoAdmin.save();
 
         res.json({
-            'status': 'Admin agregado',
-            'data': data
+            status: 'Admin agregado',
+            data: data
         });
     } catch (error) {
         res.json({
-            'status': 'Error al registrar admin',
-            'error': error.message
+            status: 'Error al registrar admin',
+            error: error.message
         });
     }
 }
 
 
-//Conseguir un unico cliente
+//Conseguir un unico admin
 adminCtrl.getUnicoAdmins = async (req, res) => {     
     try {
         const adminUnico = await Admin.findOne({ documento: req.params.documento });
@@ -58,18 +58,18 @@ adminCtrl.getUnicoAdmins = async (req, res) => {
             res.json(adminUnico);
         } else {
             res.json({
-                'status': 'Admin no encontrado',
+                status: 'Admin no existe',
             });
         }
     } catch (error) {
         res.json({
-            'status': 'Error al encontrar el admin',
-            'error': error.message,
+            status: 'Error al encontrar el admin',
+            error: error.message,
         });
     }
 }
+//Actualizar admin
 
-//Actualizar cliente
 adminCtrl.editarAdmins = async (req, res) =>  {
   try{  const adminEdit = {  
         nombre: req.body.nombre,
@@ -79,13 +79,13 @@ adminCtrl.editarAdmins = async (req, res) =>  {
     };
     const adminActualizado = await Admin.findOneAndUpdate({ documento: req.params.documento }, {$set: adminEdit}, {new:  true}); 
     res.json({
-        'status': 'Admin actualizado',
-        'data': adminActualizado
+        status: 'Admin actualizado',
+        data: adminActualizado
     });
 }catch(error){
     res.json({
-        'status': 'Error al actualizar el admin',
-        'error': error.message,
+        status: 'Error al actualizar el admin',
+        error: error.message,
     });
     }
 }
@@ -97,17 +97,17 @@ adminCtrl.eliminarAdmins = async (req, res) => {
         if (adminEliminado) {
             const nombre = adminEliminado.nombre;
             res.json({
-                'status': `Admin ${nombre} ha sido eliminado`,
+                status: `Admin ${nombre} ha sido eliminado`,
             });
         } else {
             res.json({
-                'status': 'Admin no encontrado para eliminar',
+                status: 'Admin no encontrado para eliminar',
             });
         }
     } catch (error) {
         res.json({
-            'status': 'Error al eliminar el admin',
-            'error': error.message,
+            status: 'Error al eliminar el admin',
+            error: error.message,
         });
     }
 }

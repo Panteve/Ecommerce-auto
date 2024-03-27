@@ -57,7 +57,7 @@ clienteCtrl.getUnicocliente = async (req, res) => {
             res.json(clienteUnico);
         } else if(!clienteUnico) {
             res.json({
-                status: 'Cliente no encontrado',
+                status: 'Cliente no existe',
             });
         }
     } catch (error) {

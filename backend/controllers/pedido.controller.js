@@ -28,7 +28,7 @@ pedidoCtrl.getPedido = async(req, res ) => {
 //Agregar pedido
 pedidoCtrl.createPedido = async (req, res) =>{
     try{
-        const cliente = await Cliente.findOne({documento: req.body.documentoDueño, nombre: req.body.dueño})
+        const cliente = await Cliente.findOne({documento: req.body.documentoDueño})
         
         if(!cliente){
             return res.json({
@@ -37,7 +37,7 @@ pedidoCtrl.createPedido = async (req, res) =>{
         }
         const ultimoPedido = await Pedido.find().sort({ refpedido: -1 }).limit(1)
         const nuevaReferencia = (ultimoPedido.length > 0 ? String(parseInt(ultimoPedido[0].refpedido) + 1).padStart(4, '0') : "0001");
-        const productos = await Producto.find({idproducto: req.body.idproducto})
+        const productos = await Producto.find({refproducto: req.body.refproducto})
         
         let total = 0;
         productos.forEach(producto => {
@@ -56,7 +56,7 @@ pedidoCtrl.createPedido = async (req, res) =>{
         })
 
         const data = await nuevoPedido.save()
-        await Cliente.findByIdAndUpdate(cliente.documento, { $push: { refpedido: data.refpedido } });
+        await Cliente.findOneAndUpdate(cliente.documento, { $push: { refpedido: data.refpedido } });
 
         res.json({
             status: 'Pedido creado exitosamente',
@@ -74,12 +74,12 @@ pedidoCtrl.createPedido = async (req, res) =>{
 //Conseguir un unico pedido
 pedidoCtrl.getUnicopedido = async (req, res) => {     
     try {
-        const pedidoUnico = await Pedido.findById({ documento: req.params.documento });
+        const pedidoUnico = await Pedido.findOne({ refpedido: req.params.refpedido });
         if (pedidoUnico && pedidoUnico.length > 0) {
             res.json(pedidoUnico);
         } else {
             res.json({
-                status: 'Pedido no encontrado',
+                status: 'Pedido no existe',
             });
         }
     } catch (error) {
@@ -104,7 +104,7 @@ pedidoCtrl.eliminarPedido = async (req, res) => {
         const clienteId = pedido.documentoDueño;
 
         if (clienteId) {
-            await Cliente.findByIdAndUpdate(clienteId, { $pull: { refpedido: pedido.refpedido } })
+            await Cliente.findOneAndUpdate(clienteId, { $pull: { refpedido: pedido.refpedido } })
             pedido.estado = False 
             pedido.save()
             res.json({
