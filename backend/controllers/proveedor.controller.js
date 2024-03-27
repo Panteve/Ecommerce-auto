@@ -11,12 +11,12 @@ proveedorCrtl.getProveedor = async (req, res) =>{
         res.json(proveedor)
     }else{
         res.json({
-            status: 'No ha clientes'
+            status: 'No hay proveedores'
         })
     }
     }catch(error){
         res.json({
-            status: 'Error al encontrar los clientes',
+            status: 'Error al encontrar los proveedores',
             error: error.message
         })
 
@@ -83,12 +83,12 @@ proveedorCrtl.editarProveedor = async (req, res) =>  {
       };
       const proveedorActualizado = await Proveedor.findOneAndUpdate({ nombre: req.params.nombre }, {$set: proveedorEdit}, {new:  true}); 
       res.json({
-          status: 'Cliente actualizado',
+          status: 'Proveedor actualizado',
            data: proveedorActualizado
       });
   }catch(error){
       res.json({
-          status: 'Error al actualizar el cliente',
+          status: 'Error al actualizar el proveedor',
           error: error.message,
       });
     }
@@ -119,3 +119,4 @@ proveedorCrtl.eliminarProveedor = async (req, res) =>{
     }
 }
 
+module.exports = proveedorCrtl

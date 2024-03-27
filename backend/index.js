@@ -12,7 +12,7 @@ app.set("port", process.env.PORT || 3000);
 // Middleware
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:4321" }));
+//app.use(cors({ origin: "http://localhost:4321" }));
 
 //Conexión BD Atlas
 mongoose.connect(process.env.MONGODB_URI)
@@ -24,6 +24,7 @@ app.use("/api", require("./routes/cliente.route"));
 app.use("/api", require("./routes/admin.route"));
 app.use("/api", require("./routes/pedido.route"));
 app.use("/api", require("./routes/producto.route"));
+app.use("/api", require("./routes/proveedor.route"))
 
 // Middleware de manejo de errores
 app.use((err, res) => {
