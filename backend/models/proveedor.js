@@ -6,7 +6,7 @@ const ProveedorSchema = new Schema({
     direccion: {type:String, required:true},
     telefono: {type:Number, required:true},
     correo: {type:String, required:true},
-    productos: [{ type: String, required: false }],
+    productos: [{ type: Schema.Types.String, ref: 'Productos', required: false }],
 });
 
 module.exports = mongoose.model('proveedor', ProveedorSchema);

@@ -4,7 +4,7 @@ const productoCtrl = require("../controllers/producto.controller")
 
 router.get("/producto", productoCtrl.getProductos);
 router.post("/producto", productoCtrl.createProducto);
-router.get("/producto/:refproducto", productoCtrl.getUnicoProductos);
+router.get("/producto/:parametro", productoCtrl.getUnicoProductos);
 router.put("/producto/:refproducto",productoCtrl.editarProductos);
 router.delete("/producto/:refproducto", productoCtrl.eliminarProducto);
 

@@ -6,10 +6,10 @@ const ProductoSchema = new Schema({
     nombre: {type:String, required:true},
     precio: {type:Number, required:true},
     descripcion: {type:String, required:true},
-    imagen: {type:String, required:true},
-    calificacion: {type:String, required:true},
+    imagen: {type:Array, required:true},
+    calificacion: {type:String, required:false},
     stock: {type:Number, required:true},
-    proveedor:{ type: Schema.Types.ObjectId, ref: 'Proveedor', required: true },
+    proveedor:{ type: Schema.Types.String, ref: 'Proveedor', required: true },
 });
 
 

@@ -109,7 +109,7 @@ proveedorCrtl.eliminarProveedor = async (req, res) =>{
     try {
         const proveedorEliminado = await Proveedor.findOneAndDelete({nombre: req.params.nombre});
         if (proveedorEliminado) {
-            const productosAsociados = await Producto.find({ proveedor: proveedorEliminado.name });
+            const productosAsociados = await Producto.find({ proveedor: proveedorEliminado.nombre });
             for (const producto of productosAsociados) {
                 await Producto.findOneAndDelete(producto.refproducto);
             }

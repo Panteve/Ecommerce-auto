@@ -55,14 +55,15 @@ productoCtrl.createProducto = async (req, res) => {
             imagen: req.body.imagen,
             calificacion: req.body.calificacion,
             stock: req.body.stock,
+            proveedor: proveedor.nombre,
         });
 
         const data = await nuevoProducto.save();
 
-        await Proveedor.findOneAndUpdate(proveedor.nombre, { $push: { productos: data.refpedido } });
+        await Proveedor.findOneAndUpdate({nombre:proveedor.nombre}, { $push: { productos: data.refproducto } });
 
         res.json({
-            status: `Producto ${Pedido.refpedido} agregado del proveedor ${proveedor.nombre}`,
+            status: `Producto ${data.refproducto} agregado del proveedor ${proveedor.nombre}`,
             data: data
        });
     } catch (error) {
@@ -76,14 +77,16 @@ productoCtrl.createProducto = async (req, res) => {
 //Conseguir un unico producto
 productoCtrl.getUnicoProductos = async (req,res) =>{
     try{
-        const productoUnico = await Producto.findOne({
-            $or: [
-                { refproducto: req.params.refproducto },
-                { nombre: req.params.nombre },
-                { proveedor: req.params.proveedor }
-              ]
-            })
-        if(productoUnico){
+        const parametro = req.params.parametro
+
+        const productoUnico = await Producto.find({
+            $or:[
+                {proveedor: parametro},
+                {nombre: parametro},
+                {refproducto: parametro}      
+            ]
+        })
+        if(productoUnico && productoUnico.length > 0){
             res.json(productoUnico)
         }else {
             res.json({
@@ -135,7 +138,7 @@ productoCtrl.eliminarProducto = async (req, res) =>{
         const productoId = producto.refproducto;
 
         if (productoId) {
-            await Proveedor.findOneAndUpdate(productoId, { $pull: { refproducto: producto.refproducto }}) 
+            await Proveedor.findOneAndUpdate({nombre: producto.proveedor}, { $pull: { productos: producto.refproducto }}) 
             res.json({
                 status: `Producto ${producto.refproducto} ha sido eliminado`,
             });
