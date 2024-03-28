@@ -29,7 +29,10 @@ app.use("/api", require("./routes/proveedor.route"))
 // Middleware de manejo de errores
 app.use((err, res) => {
   console.error(err.stack);
-  res.status(500).json({ error: "Error interno del servidor" });
+  res.status(500).json({ 
+    status: "Error interno del servidor",
+    error: err.message,
+   });
 });
 
 // Iniciar el servidor
