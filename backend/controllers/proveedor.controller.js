@@ -32,9 +32,9 @@ proveedorCrtl.createProveedor = async (req, res) =>{
                 {correo: req.body.correo}
             ]
         })
-        if(!proveedor){
+        if(proveedor){
             return res.json({
-                status: 'Proveedor no exite'
+                status: 'Proveedor ya existe'
             })
         }
 

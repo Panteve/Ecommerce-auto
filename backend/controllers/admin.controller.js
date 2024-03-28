@@ -8,7 +8,10 @@ adminCtrl.getAdmins = async (req, res) => {
     try {
         const admin = await Admin.find();
         if (admin && admin.length > 0) {
-            res.json(admin);
+            res.json({
+                cantidad: admin.length,
+                data: admin
+            });
         } else {
             res.json({
                 status: 'No hay admins',
@@ -68,10 +71,19 @@ adminCtrl.getUnicoAdmins = async (req, res) => {
         });
     }
 }
-//Actualizar admin
 
+//Actualizar admin
 adminCtrl.editarAdmins = async (req, res) =>  {
-  try{  const adminEdit = {  
+  try{  
+    
+    const admin = await Admin.findOne({documento: req.params.documento})
+    if(!admin){
+        return res.json({
+            status: 'Admin no existe'
+        })
+    }
+    
+    const adminEdit = {  
         nombre: req.body.nombre,
         correo: req.body.correo,
         telefono: req.body.telefono,
@@ -90,7 +102,7 @@ adminCtrl.editarAdmins = async (req, res) =>  {
     }
 }
 
-// Eliminar cliente
+// Eliminar admin
 adminCtrl.eliminarAdmins = async (req, res) => {
     try {
         const adminEliminado = await Admin.findOneAndDelete({documento: req.params.documento});
