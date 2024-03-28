@@ -9,7 +9,7 @@ const ClienteSchema = new Schema({
     direccion: { type: String, required: true },
     telefono: { type: Number, required: true },
     contrasena: { type: String, required: true },
-    refpedido: [{ type: Schema.Types.ObjectId, ref: 'Pedido', required: false }],
+    refpedido: [{ type: Schema.Types.String, ref: 'Pedido', required: false }],
 });
 
 module.exports = mongoose.model('cliente', ClienteSchema);

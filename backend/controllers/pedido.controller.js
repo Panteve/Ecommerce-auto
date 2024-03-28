@@ -1,11 +1,10 @@
 const Pedido = require('../models/pedido')
-const Cliente = require('../models/pedido')
+const Cliente = require('../models/cliente')
 const Producto= require('../models/producto')
 const pedidoCtrl = {}
 
 
 //Obtener todos los pedidos
-
 pedidoCtrl.getPedido = async(req, res ) => {
     try{
         const pedidos = await Pedido.find()
@@ -37,26 +36,41 @@ pedidoCtrl.createPedido = async (req, res) =>{
         }
         const ultimoPedido = await Pedido.find().sort({ refpedido: -1 }).limit(1)
         const nuevaReferencia = (ultimoPedido.length > 0 ? String(parseInt(ultimoPedido[0].refpedido) + 1).padStart(4, '0') : "0001");
-        const productos = await Producto.find({refproducto: req.body.refproducto})
-        
+        const productosPedido = req.body.productos;
         let total = 0;
-        productos.forEach(producto => {
-            total += producto.precio * producto.cantidad;
-        });
+
+        // Iterar sobre cada producto en el pedido
+        for (const productoPedido of productosPedido) {
+            const producto = await Producto.findOne({ refproducto: productoPedido.producto });
+            
+            // Si el producto no existe, enviar un mensaje de error
+            if (!producto) {
+                return res.json({
+                    status: `Producto con referencia ${productoPedido.producto} no encontrado`
+                });
+            }
+            producto.stock -= productoPedido.cantidad
+            await producto.save();
+
+            // Calcular el subtotal del producto y agregarlo al total
+            total += producto.precio * productoPedido.cantidad;
+        }
+
+
         
 
         const nuevoPedido = new Pedido({
             refpedido: nuevaReferencia,
             fechacreacion: new Date(),
             total: total,
-            productos: req.body.productos,
-            documentoDueño: cliente.documento, 
+            productos: productosPedido,
+            documentoDueño: req.body.documentoDueño, 
             dueño: cliente.nombre,
-            estados: True 
+            estados: true 
         })
 
         const data = await nuevoPedido.save()
-        await Cliente.findOneAndUpdate(cliente.documento, { $push: { refpedido: data.refpedido } });
+        await Cliente.findOneAndUpdate({documento : cliente.documento}, { $push: { refpedido: data.refpedido } });
 
         res.json({
             status: 'Pedido creado exitosamente',
@@ -75,7 +89,7 @@ pedidoCtrl.createPedido = async (req, res) =>{
 pedidoCtrl.getUnicopedido = async (req, res) => {     
     try {
         const pedidoUnico = await Pedido.findOne({ refpedido: req.params.refpedido });
-        if (pedidoUnico && pedidoUnico.length > 0) {
+        if (pedidoUnico) {
             res.json(pedidoUnico);
         } else {
             res.json({
@@ -104,11 +118,11 @@ pedidoCtrl.eliminarPedido = async (req, res) => {
         const clienteId = pedido.documentoDueño;
 
         if (clienteId) {
-            await Cliente.findOneAndUpdate(clienteId, { $pull: { refpedido: pedido.refpedido } })
-            pedido.estado = False 
+            await Cliente.findOneAndUpdate({documento: clienteId }, { $pull: { refpedido: pedido.refpedido } })
+            pedido.estado = false 
             pedido.save()
             res.json({
-                status: `Pedido ${pedidoEliminado.refpedido} ha sido eliminado`,
+                status: `Pedido ${pedido.refpedido} ha sido eliminado`,
             });
         }else {
             res.json({
