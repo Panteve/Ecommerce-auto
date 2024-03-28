@@ -7,7 +7,10 @@ clienteCtrl.getCliente = async (req, res) => {
     try {
         const clientes = await Cliente.find();
         if (clientes && clientes.length > 0) {
-            res.json(clientes);
+            res.json({
+                cantidad:clientes.length,
+                data:clientes
+            });
         } else{
             res.json({
                 status: 'No hay clientes',
@@ -70,7 +73,15 @@ clienteCtrl.getUnicocliente = async (req, res) => {
 
 //Actualizar cliente
 clienteCtrl.editarCliente = async (req, res) =>  {
-  try{  const clienteEdit = {  
+  try{  
+    const unicoCliente = await Cliente.findOne({documento: req.params.documento})
+    if(!unicoCliente){
+        return res.json({
+            status: 'Cliente no existe'
+        })
+    }
+    
+    const clienteEdit = {  
         nombre: req.body.nombre,
         correo: req.body.correo,
         ciudad: req.body.ciudad,
