@@ -8,7 +8,10 @@ proveedorCrtl.getProveedor = async (req, res) =>{
     const proveedor = await Proveedor.find()
 
     if(proveedor && proveedor.length  > 0){
-        res.json(proveedor)
+        res.json({
+            cantidad:proveedor.length,
+            data: proveedor
+        })
     }else{
         res.json({
             status: 'No hay proveedores'
@@ -60,7 +63,7 @@ proveedorCrtl.getUnicoProveedor  = async (req, res) => {
 
         if (proveedorUnico) {
             res.json(proveedorUnico);
-        } else if(!proveedorUnico) {
+        } else {
             res.json({
                 status: 'Proveedor no existe',
             });
@@ -75,7 +78,14 @@ proveedorCrtl.getUnicoProveedor  = async (req, res) => {
 
 //Actualizar proveedor 
 proveedorCrtl.editarProveedor = async (req, res) =>  {
-    try{  const proveedorEdit = {  
+    try{ 
+        const proveedorExiste = await Proveedor.findOne({nombre: req.params.nombre})
+        if(!proveedorExiste){
+            return res.json({
+                status: "Proveedor no existe"
+            })
+        }
+        const proveedorEdit = {  
           nombre: req.body.nombre,
           direccion: req.body.direccion,
           telefono: req.body.telefono,

@@ -1,0 +1,31 @@
+//Obtener proveedores 
+GET http://localhost:3000/api/proveedor HTTP/1.1
+
+###
+//Agregar proveedor 
+POST http://localhost:3000/api/proveedor HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Nike" ,
+    "direccion": "Cra 7",
+    "telefono": 60198756,
+    "correo": "nike@proveenike.com"
+}
+
+###
+//Conseguir un unico proovedar
+GET http://localhost:3000/api/proveedor/Nike HTTP/1.1
+
+###
+//Actualizar proveedor 
+PUT http://localhost:3000/api/proveedor/Nike HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "nike Co"
+}
+
+###
+//Eliminar proveedor
+DELETE http://localhost:3000/api/proveedor/Nike HTTP/1.1

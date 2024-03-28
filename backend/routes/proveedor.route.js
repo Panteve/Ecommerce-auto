@@ -4,9 +4,9 @@ const proveedorCrtl = require("../controllers/proveedor.controller")
 
 router.get("/proveedor", proveedorCrtl.getProveedor);
 router.post("/proveedor", proveedorCrtl.createProveedor);
-router.get("/proveedor/:refpedido", proveedorCrtl.getUnicoProveedor);
-router.put("/proveedor/:refpedido",proveedorCrtl.editarProveedor);
-router.delete("/proveedor/:refpedido", proveedorCrtl.eliminarProveedor);
+router.get("/proveedor/:nombre", proveedorCrtl.getUnicoProveedor);
+router.put("/proveedor/:nombre",proveedorCrtl.editarProveedor);
+router.delete("/proveedor/:nombre", proveedorCrtl.eliminarProveedor);
 
 
 module.exports = router; 
