@@ -24,7 +24,9 @@ app.use("/api", require("./routes/cliente.route"));
 app.use("/api", require("./routes/admin.route"));
 app.use("/api", require("./routes/pedido.route"));
 app.use("/api", require("./routes/producto.route"));
-app.use("/api", require("./routes/proveedor.route"))
+app.use("/api", require("./routes/proveedor.route"));
+app.use("/api", require("./routes/login.route"));
+
 
 // Middleware de manejo de errores
 app.use((err, res) => {

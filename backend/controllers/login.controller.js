@@ -1,7 +1,7 @@
 const Cliente = require('../models/cliente');
 const loginCtrl = {};
 
-loginCtrl.login = async (req, res) => {     
+loginCtrl.iniciarSesion = async (req, res) => {     
     try {
         const cliente = await Cliente.findOne({
             $and:[
@@ -19,8 +19,10 @@ loginCtrl.login = async (req, res) => {
         }
     } catch (error) {
         res.json({
-            status: 'Error al encontrar el cliente',
+            status: 'Error al encontrar al iniciar sesion',
             error: error.message,
         });
     }
 }
+
+module.exports = loginCtrl;
