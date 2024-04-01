@@ -1,12 +1,12 @@
-<div class="navbar bg-orange-400 ">
+<div class="navbar sticky top-0 z-50 shadow-lg bg-black">
   <div class="flex-1 ">
-    <a class="btn bg-orange-400 border-orange-400 shadow-none hover:bg-orange-400 hover:border-orange-400 text-4xl text-white">Sportlife*</a>
+    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-2xl text-white">Ecommerce</a>
   </div>
   <div class="flex-none">
     <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle bg-black">
         <div class="indicator">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
           <span class="badge badge-sm indicator-item">8</span>
         </div>
       </div>
@@ -15,7 +15,7 @@
           <span class="font-bold text-lg">8 Items</span>
           <span class="text-info">Subtotal: $999</span>
           <div class="card-actions">
-            <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 ">View cart</button>
+            <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 ">Ver carrito</button>
           </div>
         </div>
       </div>
@@ -39,8 +39,10 @@
       </ul>
     </div>
   }@else{
-    <a class="btn bg-orange-400 border-orange-400 shadow-none hover:bg-orange-400 hover:border-orange-400 text-1xl text-white">
+    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-xl text-white" routerLink="login">
       Iniciar sesion</a>
   }
   </div>
 </div>
+
+<router-outlet/>

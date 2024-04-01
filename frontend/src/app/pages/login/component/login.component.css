@@ -1,0 +1,9 @@
+section {
+    background-image: radial-gradient(circle, #6EE7B7, #3B82F6);
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  
