@@ -1,4 +1,4 @@
-<div class="navbar sticky top-0 z-50 shadow-lg bg-black">
+<nav class="navbar sticky top-0 z-50 shadow-lg bg-black">
   <div class="flex-1 ">
     <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-2xl text-white" routerLink="">Ecommerce</a>
   </div>
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    @if(!isloggedIn){
+    @if(isloggedIn){
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
@@ -39,10 +39,65 @@
       </ul>
     </div>
   }@else{
-    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-xl text-white" routerLink="/login">
+    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-l text-white" routerLink="/login">
       Iniciar sesion</a>
   }
   </div>
-</div>
+  
+</nav>
 
 <router-outlet/>
+
+@if (isHomePage()) {<section class=" h-screen w-full bg-gradient-to-bl from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% flex flex-col">
+  <div class="carousel mt-10 mx-16" > //TO DO: Aparecer algunas imagenes de los productos con un for 
+    <div id="slide1" class="carousel-item relative w-full">
+      <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
+      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+        <a href="#slide4" class="btn btn-circle bg-black text-white border-black">❮</a> 
+        <a href="#slide2" class="btn btn-circle bg-black text-white border-black">❯</a>
+      </div>
+    </div> 
+  </div>  
+  <div class="mx-20 my-10 p-20 bg-white rounded-lg shadow-md">
+      
+  </div>
+</section>}
+
+<footer class="footer p-10 bg-black text-white justify-items-start ">
+  <nav class="mx-2">
+    <h6 class="footer-title">Services</h6> 
+    <a class="link link-hover">Branding</a>
+    <a class="link link-hover">Design</a>
+    <a class="link link-hover">Marketing</a>
+    <a class="link link-hover">Advertisement</a>
+  </nav> 
+  <nav class="mx-3">
+    <h6 class="footer-title">Company</h6> 
+    <a class="link link-hover">About us</a>
+    <a class="link link-hover">Contact</a>
+    <a class="link link-hover">Jobs</a>
+    <a class="link link-hover">Press kit</a>
+  </nav> 
+  <nav class="mx-2">
+
+    <h6 class="footer-title">Social</h6> 
+    <div class="grid grid-flow-col gap-4">
+      <a class="cursor-pointer" ><img src="../assets/X_light.svg"></a>
+      <a class="cursor-pointer" ><img src="../assets/Instagram_light.svg"></a>
+      <a class="cursor-pointer" ><img src="../assets/linkedin.svg"></a>
+      <a class="cursor-pointer" ><img src="../assets/github.svg"></a>
+    </div>
+
+
+    <h6 class="footer-title mt-3">Hecho con</h6> 
+    <div class="grid grid-flow-col gap-4">
+    <a href="" target="_blank" class="tooltip" data-tip="Angular"><img src = "../assets/angular.svg" ></a>
+    <a href="" target="_blank" class="tooltip" data-tip="tailwindcss"><img src = "../assets/tailwindcss.svg"></a>
+    <a href="" target="_blank" class="tooltip" data-tip="daisyUI"><img src = "../assets/daisyui-logomark.svg"></a>
+    <a href="" target="_blank" class="tooltip" data-tip="MongoDB"><img src = "../assets/mongodb.svg"></a>
+    <a href="" target="_blank" class="tooltip" data-tip="Express.js"><img src = "../assets/Express.js_light.svg"></a>
+   
+  </div>
+
+  </nav>
+</footer>
