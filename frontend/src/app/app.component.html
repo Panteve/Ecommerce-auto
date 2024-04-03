@@ -1,6 +1,6 @@
 <nav class="navbar sticky top-0 z-50 shadow-lg bg-black">
   <div class="flex-1 ">
-    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-2xl text-white" routerLink="">Ecommerce</a>
+    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-2xl text-white" routerLink="">SportLife</a>
   </div>
   <div class="flex-none">
     <div class="dropdown dropdown-end">
@@ -48,23 +48,49 @@
 
 <router-outlet/>
 
-@if (isHomePage()) {<section class=" h-screen w-full bg-gradient-to-bl from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% flex flex-col">
-  <div class="carousel mt-10 mx-16" > //TO DO: Aparecer algunas imagenes de los productos con un for 
-    <div id="slide1" class="carousel-item relative w-full">
-      <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="#slide4" class="btn btn-circle bg-black text-white border-black">❮</a> 
-        <a href="#slide2" class="btn btn-circle bg-black text-white border-black">❯</a>
-      </div>
-    </div> 
-  </div>  
-  <div class="mx-20 my-10 p-20 bg-white rounded-lg shadow-md">
-      
+@if (isHomePage()) {<section class="h-auto w-auto flex flex-col bg-gradient-to-b from-blue-600 from via-sky-500 via to-emerald-400 to" id="fondo">
+  <div class="flex justify-center mt-6">
+    <img src="https://avenidacentrocomercial.com.co/wp-content/uploads/2023/05/L.-233-SPORT-LIFE.png" class="w-full max-w-md" alt="Logo de Sport Life"> 
   </div>
+  <div class="bg-yellow-500 text-center py-8 px-4 md:px-16 rounded-lg shadow-xl mt-10">
+    <p class="text-white text-3xl md:text-4xl font-bold mb-4">¡Oferta Especial!</p>
+    <p class="text-white text-lg md:text-xl">¡Obtén un 30% de descuento en todas tus compras realizadas hoy!</p>
+    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg mt-4" routerLink="productos">Compra Aqui!</button>
+  </div>
+  <div class="mx-20 my-10 bg-white rounded-lg shadow-md">
+    <h1 class="text-center text-2xl font-semibold mt-4 sm:text-6xl">SportLife</h1>   
+    <div class="flex flex-wrap justify-center">
+      <div class="w-full md:w-1/3 p-4"> 
+        <div class="text-center">
+          <img src="../assets/insert_emoticon.svg" class="mx-auto">
+          <h5 class="text-lg font-semibold">Mejores productos a nivel nacional</h5>
+          <p class="text-gray-600">Nuestra misión es ofrecer una amplia gama de productos de la más alta calidad, cuidadosamente seleccionados para satisfacer las necesidades de nuestros clientes a nivel nacional. Desde productos de última tecnología hasta clásicos probados, garantizamos la excelencia en cada artículo que ofrecemos.</p>
+        </div>
+      </div>
+    
+      <div class="w-full md:w-1/3 p-4"> 
+        <div class="text-center">
+          <img src="../assets/access_time.svg" class="mx-auto">
+          <h5 class="text-lg font-semibold">Entregas rápidas</h5>
+          <p class="text-gray-600">En SportLife, entendemos la importancia de recibir tus productos de manera rápida y eficiente. Por eso, nos comprometemos a realizar entregas rápidas para que disfrutes de tus compras en el menor tiempo posible. Nuestra red logística está diseñada para garantizar la puntualidad en cada envío.</p>
+        </div>
+      </div>
+    
+      <div class="w-full md:w-1/3 p-4"> 
+        <div class="text-center">
+          <img src="../assets/accessibility_new.svg" class="mx-auto">
+          <h5 class="text-lg font-semibold">Mejor atención al cliente</h5>
+          <p class="text-gray-600">En SportLife, la satisfacción del cliente es nuestra prioridad. Nuestro equipo de atención al cliente está dedicado a brindarte la mejor experiencia de compra. Estamos disponibles para responder tus preguntas, resolver problemas y asegurarnos de que cada interacción contigo sea positiva y satisfactoria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  
 </section>}
 
 <footer class="footer p-10 bg-black text-white justify-items-start ">
-  <nav class="mx-2">
+  <nav class="mx-2 md:w-1/3">
     <h6 class="footer-title">Services</h6> 
     <a class="link link-hover">Branding</a>
     <a class="link link-hover">Design</a>
@@ -78,26 +104,22 @@
     <a class="link link-hover">Jobs</a>
     <a class="link link-hover">Press kit</a>
   </nav> 
-  <nav class="mx-2">
+  <nav class="mx-2 md:w-1/3">
 
     <h6 class="footer-title">Social</h6> 
     <div class="grid grid-flow-col gap-4">
-      <a class="cursor-pointer" ><img src="../assets/X_light.svg"></a>
-      <a class="cursor-pointer" ><img src="../assets/Instagram_light.svg"></a>
-      <a class="cursor-pointer" ><img src="../assets/linkedin.svg"></a>
-      <a class="cursor-pointer" ><img src="../assets/github.svg"></a>
+      <a class="link" ><img src="../assets/X_light.svg" alt="Icono de X(twitter)"></a>
+      <a class="link" ><img src="../assets/Instagram_light.svg" alt="Icono de instagram"></a>
     </div>
 
 
     <h6 class="footer-title mt-3">Hecho con</h6> 
     <div class="grid grid-flow-col gap-4">
-    <a href="" target="_blank" class="tooltip" data-tip="Angular"><img src = "../assets/angular.svg" ></a>
-    <a href="" target="_blank" class="tooltip" data-tip="tailwindcss"><img src = "../assets/tailwindcss.svg"></a>
-    <a href="" target="_blank" class="tooltip" data-tip="daisyUI"><img src = "../assets/daisyui-logomark.svg"></a>
-    <a href="" target="_blank" class="tooltip" data-tip="MongoDB"><img src = "../assets/mongodb.svg"></a>
-    <a href="" target="_blank" class="tooltip" data-tip="Express.js"><img src = "../assets/Express.js_light.svg"></a>
-   
-  </div>
-
+      <a href="https://angular.dev" target="_blank" class="tooltip" data-tip="Angular"><img src = "../assets/angular.svg" alt="Icono de Angular" ></a>
+      <a href="https://tailwindcss.com" target="_blank" class="tooltip" data-tip="tailwindcss"><img src = "../assets/tailwindcss.svg" alt="Icono de tailwindcss" ></a>
+      <a href="https://daisyui.com" target="_blank" class="tooltip" data-tip="daisyUI"><img src = "../assets/daisyui-logomark.svg" alt="Icono de daisyUI" ></a>
+      <a href="https://www.mongodb.com/es/cloud/atlas/efficiency?utm_content=rlsapostreg&utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general_retarget-brand-postreg_gic-null_amers-all_ps-all_desktop_eng_lead&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14412646452&adgroup=131761126052&cq_cmp=14412646452&gad_source=1&gclid=Cj0KCQjw2a6wBhCVARIsABPeH1spRecoTzrXvWSYUQpiKb8keusTKIn6mPeJaFBwHYH-Z5NrF5pWMUcaAnaiEALw_wcB" target="_blank" class="tooltip" data-tip="MongoDB"><img src = "../assets/mongodb.svg" alt="Icono de MongoDB" ></a>
+      <a href="https://expressjs.com" target="_blank" class="tooltip" data-tip="Express.js"><img src = "../assets/Express.js_light.svg" alt="Icono de Express.js" ></a>
+    </div>
   </nav>
 </footer>
