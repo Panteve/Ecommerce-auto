@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const compression = require('compression');
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -12,6 +13,7 @@ app.set("port", process.env.PORT || 3000);
 // Middleware
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(compression());
 //app.use(cors({ origin: "http://localhost:4321" }));
 
 //Conexión BD Atlas
