@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit  } from '@angular/core';
 import { RouterLink, RouterOutlet, Router} from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { RouterLink, RouterOutlet, Router} from '@angular/router';
 })
 export class AppComponent {
   isloggedIn = false;
-
+  showContent: boolean = false;
 
   constructor(
     private router: Router
@@ -19,4 +19,7 @@ export class AppComponent {
   isHomePage(): boolean {
     return this.router.url === '/';
   }
+
+
 }
+

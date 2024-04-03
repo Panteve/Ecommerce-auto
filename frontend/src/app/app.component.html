@@ -24,7 +24,7 @@
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <img alt="Imagen del usuario" src="" />
         </div>
       </div>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -73,12 +73,12 @@
 
 
     <h6 class="footer-title mt-3">Hecho con</h6> 
-    <div class="grid grid-flow-col gap-4">
+    @if (showContent ) {<div class="grid grid-flow-col gap-4">
       <a href="https://angular.dev" target="_blank" class="tooltip" data-tip="Angular"><img src = "../assets/angular.svg" alt="Icono de Angular" ></a>
       <a href="https://tailwindcss.com" target="_blank" class="tooltip" data-tip="tailwindcss"><img src = "../assets/tailwindcss.svg" alt="Icono de tailwindcss" ></a>
       <a href="https://daisyui.com" target="_blank" class="tooltip" data-tip="daisyUI"><img src = "../assets/daisyui-logomark.svg" alt="Icono de daisyUI" ></a>
       <a href="https://www.mongodb.com/es/cloud/atlas/efficiency?utm_content=rlsapostreg&utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general_retarget-brand-postreg_gic-null_amers-all_ps-all_desktop_eng_lead&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14412646452&adgroup=131761126052&cq_cmp=14412646452&gad_source=1&gclid=Cj0KCQjw2a6wBhCVARIsABPeH1spRecoTzrXvWSYUQpiKb8keusTKIn6mPeJaFBwHYH-Z5NrF5pWMUcaAnaiEALw_wcB" target="_blank" class="tooltip" data-tip="MongoDB"><img src = "../assets/mongodb.svg" alt="Icono de MongoDB" ></a>
       <a href="https://expressjs.com" target="_blank" class="tooltip" data-tip="Express.js"><img src = "../assets/Express.js_light.svg" alt="Icono de Express.js" ></a>
-    </div>
+    </div>}
   </nav>
 </footer>
