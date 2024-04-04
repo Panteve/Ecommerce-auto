@@ -2,11 +2,11 @@
   <div class="flex-1 ">
     <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black text-2xl text-white" routerLink="">SportLife</a>
   </div>
-  <div class="flex-none">
+  <div class="flex-none aspect-auto">
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle bg-black">
         <div class="indicator">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 aspect-auto" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
           <span class="badge badge-sm indicator-item">8</span>
         </div>
       </div>
@@ -48,6 +48,7 @@
 
 <router-outlet/>
 
+@defer (on idle) {
 <footer class="footer p-10 bg-black text-white justify-items-start ">
   <nav class="mx-2 md:w-1/3">
     <h6 class="footer-title">Services</h6> 
@@ -67,18 +68,18 @@
 
     <h6 class="footer-title">Social</h6> 
     <div class="grid grid-flow-col gap-4">
-      <a class="link" ><img src="../assets/X_light.svg" alt="Icono de X(twitter)"></a>
-      <a class="link" ><img src="../assets/Instagram_light.svg" alt="Icono de instagram"></a>
+      <a class="link" ><img src="../assets/X_light.svg" alt="Icono de X(twitter)" width="24" height="24"></a>
+      <a class="link" ><img src="../assets/Instagram_light.svg" alt="Icono de instagram" width="24" height="24"></a>
     </div>
 
 
     <h6 class="footer-title mt-3">Hecho con</h6> 
-    @if (showContent ) {<div class="grid grid-flow-col gap-4">
-      <a href="https://angular.dev" target="_blank" class="tooltip" data-tip="Angular"><img src = "../assets/angular.svg" alt="Icono de Angular" ></a>
-      <a href="https://tailwindcss.com" target="_blank" class="tooltip" data-tip="tailwindcss"><img src = "../assets/tailwindcss.svg" alt="Icono de tailwindcss" ></a>
-      <a href="https://daisyui.com" target="_blank" class="tooltip" data-tip="daisyUI"><img src = "../assets/daisyui-logomark.svg" alt="Icono de daisyUI" ></a>
-      <a href="https://www.mongodb.com/es/cloud/atlas/efficiency?utm_content=rlsapostreg&utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general_retarget-brand-postreg_gic-null_amers-all_ps-all_desktop_eng_lead&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14412646452&adgroup=131761126052&cq_cmp=14412646452&gad_source=1&gclid=Cj0KCQjw2a6wBhCVARIsABPeH1spRecoTzrXvWSYUQpiKb8keusTKIn6mPeJaFBwHYH-Z5NrF5pWMUcaAnaiEALw_wcB" target="_blank" class="tooltip" data-tip="MongoDB"><img src = "../assets/mongodb.svg" alt="Icono de MongoDB" ></a>
-      <a href="https://expressjs.com" target="_blank" class="tooltip" data-tip="Express.js"><img src = "../assets/Express.js_light.svg" alt="Icono de Express.js" ></a>
-    </div>}
+    <div class="grid grid-flow-col gap-4">
+      <a href="https://angular.dev" target="_blank" class="tooltip aspect-auto" data-tip="Angular"><img src = "../assets/angular.svg" alt="Icono de Angular" width="24" height="24" ></a>
+      <a href="https://tailwindcss.com" target="_blank" class="tooltip aspect-auto" data-tip="tailwindcss"><img src = "../assets/tailwindcss.svg" alt="Icono de tailwindcss" width="24" height="24" ></a>
+      <a href="https://daisyui.com" target="_blank" class="tooltip aspect-auto" data-tip="daisyUI"><img src = "../assets/daisyui-logomark.svg" alt="Icono de daisyUI" width="24" height="24" ></a>
+      <a href="https://www.mongodb.com/es/cloud/atlas/efficiency?utm_content=rlsapostreg&utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general_retarget-brand-postreg_gic-null_amers-all_ps-all_desktop_eng_lead&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14412646452&adgroup=131761126052&cq_cmp=14412646452&gad_source=1&gclid=Cj0KCQjw2a6wBhCVARIsABPeH1spRecoTzrXvWSYUQpiKb8keusTKIn6mPeJaFBwHYH-Z5NrF5pWMUcaAnaiEALw_wcB" target="_blank" class="tooltip" data-tip="MongoDB"><img src = "../assets/mongodb.svg" alt="Icono de MongoDB" width="24" height="24" ></a>
+      <a href="https://expressjs.com" target="_blank" class="tooltip aspect-auto" data-tip="Express.js"><img src = "../assets/Express.js_light.svg" alt="Icono de Express.js" width="24" height="24" ></a>
+    </div>
   </nav>
-</footer>
+</footer>}
