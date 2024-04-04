@@ -12,12 +12,12 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        title: 'Ecommerce-iniciar sesion',
+        title: 'SportLife-iniciar sesion',
         component: LoginComponent,
     },
     {
         path: 'register',
-        title: 'Ecommerce-registrarse',
+        title: 'SportLife-registrarse',
         component: RegisterComponent,
     },
 ];
