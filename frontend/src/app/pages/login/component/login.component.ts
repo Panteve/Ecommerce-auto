@@ -25,10 +25,7 @@ export class LoginComponent{
   onSubmit() {
     this.clienteService.loginCliente(this.cliente.documento, this.cliente.contrasena)
     .subscribe( response => {
-      this.data = response
-      this.clienteService.isLoggedIn = this.data.isLoggedIn
       this.router.navigate(['/']);
-      
     }, error => {
       console.error(error);
     });

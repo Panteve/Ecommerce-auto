@@ -1,0 +1,47 @@
+<section>
+    <div class="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="relative w-full bg-white rounded-xl shadow-2xl border md:mt-0 sm:max-w-xl xl:p-0 ">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
+                    Mi cuenta
+                </h1>
+                <table class="table table-auto">
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{clienteService.cliente.nombre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Documento</th>
+                        <td>{{clienteService.cliente.documento}}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td>{{clienteService.cliente.correo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Ciudad</th>
+                        <td>{{clienteService.cliente.ciudad}}</td>
+                    </tr>
+                    <tr>
+                        <th>Direccion</th>
+                        <td>{{clienteService.cliente.direccion}}</td>
+                      </tr>
+                    <tr>
+                      <th>Telefono</th>
+                      <td>{{clienteService.cliente.telefono}}</td>
+                    </tr>
+                    <tr>
+                        <th>Lista de pedidos hechos</th>
+                            <td>
+                                <ul>
+                                    <li>
+                               <!--{{clienteService.cliente.pedidos}}--> 
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

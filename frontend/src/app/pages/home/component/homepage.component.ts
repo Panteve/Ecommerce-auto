@@ -9,9 +9,11 @@ import { ClienteService } from '../../../services/cliente.service';
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
-  @Input () nombre= ''
   constructor(
     public clientService: ClienteService
-  ){}
+  ){
+    
+
+  }
 
 }
