@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-    @if(isloggedIn){
+    @if(this.clientService.isLoggedIn){
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class=" rounded-full w-auto h-auto">
@@ -51,7 +51,7 @@
       </ul>
     </div>
   }@else{
-    <a (click)="signIn()" class="btn bg-black border-black shadow-none hover:bg-black hover:border-black sm:text-sm md:text-xl text-white" routerLink="/login">
+    <a class="btn bg-black border-black shadow-none hover:bg-black hover:border-black sm:text-sm md:text-xl text-white" routerLink="/login">
       Iniciar sesion</a>
   }
   </div>

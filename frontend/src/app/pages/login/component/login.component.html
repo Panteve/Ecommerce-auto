@@ -5,21 +5,21 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
                     Inicia sesion
                 </h1>
-                <form class="space-y-4 md:space-y-6" action="#">
+                <form (ngSubmit)="onSubmit()"  class="space-y-4 md:space-y-6">
                     <div>
                         <label for="Documento" class="block mb-2 text-sm font-medium ">Documento</label>
-                        <input type="number" name="Documento" id="Documento" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Ingrese su documento" required>
+                        <input  [(ngModel)]="cliente.documento" type="number" name="Documento" id="Documento" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Ingrese su documento" required>
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium">Contraseña</label>
-                        <input type="password" name="password" id="password"  class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Ingrese su contraseña" required>
+                        <input [(ngModel)]="cliente.contrasena" type="password" name="password" id="password"  class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Ingrese su contraseña" required>
                     </div>
                     <div class="flex items-center justify-between">
                         <a href="#" class="text-sm font-medium text-primary-600 hover:underline ">Olvide mi Contraseña</a>
                     </div>
                     <button type="submit" class="btn btn-md md:btn-lg w-full text-white bg-black hover:bg-gray-800">Iniciar sesion</button>
                     <p class="text-sm font-light text-gray-500">
-                        No tienes cuenta? <a class="font-medium text-gray-500 hover:underline hover:cursor-pointer hover:text-black" routerLink="/register" >Registrate</a>
+                        No tienes cuenta?<a class="font-medium text-gray-500 hover:underline hover:cursor-pointer hover:text-black" routerLink="/register" >Registrate</a>
                     </p>
                 </form>
             </div>

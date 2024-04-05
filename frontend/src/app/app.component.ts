@@ -1,6 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject,OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router'
-import { DOCUMENT, NgOptimizedImage } from '@angular/common';;
+import { DOCUMENT, NgOptimizedImage } from '@angular/common';
+import { ClienteService } from './services/cliente.service';
+
 
 @Component({
     selector: 'app-root',
@@ -11,37 +13,24 @@ import { DOCUMENT, NgOptimizedImage } from '@angular/common';;
 })
 export class AppComponent {
 
-  isloggedIn: boolean;
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    public clientService: ClienteService
+  ){
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    // Acceder a localStorage de manera segura
-    const localStorage = this.document.defaultView?.localStorage;
-
-    // Verificar si localStorage está disponible
+  const localStorage = this.document.defaultView?.localStorage;
     if (localStorage) {
-      // Recuperar el estado de 'isloggedIn' del almacenamiento local al inicializar el componente
-      const storedValue = localStorage.getItem('isloggedIn');
-      this.isloggedIn = storedValue !== null ? JSON.parse(storedValue) : false;
+      const storedValue = localStorage.getItem('clientService.isLoggedIn');
+      this.clientService.isLoggedIn = storedValue !== null ? JSON.parse(storedValue) : false;
     } else {
-      // Si localStorage no está disponible, inicializar 'isloggedIn' como falso
-      this.isloggedIn = false;
+      this.clientService.isLoggedIn = false;
     }
-  }
+  } 
 
-  signIn() {
-    this.isloggedIn = true
-    const localStorage = this.document.defaultView?.localStorage;
-    if (localStorage) {
-      localStorage.setItem('isloggedIn', JSON.stringify(this.isloggedIn));
-    }
-  }
 
-  logout() {
-    // Cambiar el estado de 'isloggedIn' y guardar en el almacenamiento local
-    this.isloggedIn = false;
-    const localStorage = this.document.defaultView?.localStorage;
-    if (localStorage) {
-      localStorage.setItem('isloggedIn', JSON.stringify(this.isloggedIn));
-    }
+
+logout() {
+  this.clientService.isLoggedIn = false;
+  localStorage.setItem('clientService.isLoggedIn', JSON.stringify(this.clientService.isLoggedIn));
   }
 }
