@@ -11,7 +11,7 @@ loginCtrl.iniciarSesion = async (req, res) => {
         })
     
         if (cliente) {
-            res.json({ cliente, log: true })
+            res.json({ cliente, isLoggedIn: true })
         } else if(!cliente) {
             res.json({
                 status: 'Credenciales incorrectas',
