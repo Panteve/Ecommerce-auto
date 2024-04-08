@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const PedidoSchema = new Schema({
-    refpedido: {type:String, required:true},
-    fechacreacion: {type:Date, required:true},
-    total: {type:Number, required:true},
-    estado:{type:Boolean, required: true},
-    dueño: {type: Schema.Types.String, ref: 'Cliente', required: true},
+    refpedido: {type:String, required:false},
+    fechacreacion: {type:Date, required:false},
+    total: {type:Number, required:false},
+    estado:{type:Boolean, required: false},
+    dueño: {type: Schema.Types.String, ref: 'Cliente', required: false},
     documentoDueño: {type: Schema.Types.Number, ref: 'Cliente', required: true},
     productos: [{
         producto: { type: Schema.Types.String, ref: 'Producto', required: true },

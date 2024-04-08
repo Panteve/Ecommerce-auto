@@ -39,11 +39,9 @@ pedidoCtrl.createPedido = async (req, res) =>{
         const productosPedido = req.body.productos;
         let total = 0;
 
-        // Iterar sobre cada producto en el pedido
         for (const productoPedido of productosPedido) {
             const producto = await Producto.findOne({ refproducto: productoPedido.producto });
             
-            // Si el producto no existe, enviar un mensaje de error
             if (!producto) {
                 return res.json({
                     status: `Producto con referencia ${productoPedido.producto} no encontrado`
@@ -52,7 +50,6 @@ pedidoCtrl.createPedido = async (req, res) =>{
             producto.stock -= productoPedido.cantidad
             await producto.save();
 
-            // Calcular el subtotal del producto y agregarlo al total
             total += producto.precio * productoPedido.cantidad;
         }
 

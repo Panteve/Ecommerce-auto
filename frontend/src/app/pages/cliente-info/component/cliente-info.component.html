@@ -1,47 +1,66 @@
 <section>
-    <div class="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div class="relative w-full bg-white rounded-xl shadow-2xl border md:mt-0 sm:max-w-xl xl:p-0 ">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
+    <div class="md:flex md:items-center md:justify-center px-6 py-8 md:mx-auto md:h-screen ">
+        <div class=" mb-7 md:my-14 bg-white rounded-lg shadow-md aspect-auto max-h-fit">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end">
+                <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">
                     Mi cuenta
                 </h1>
                 <table class="table table-auto">
+                    <tbody class="divide-y ">
                     <tr>
-                        <th>Nombre</th>
-                        <td>{{clienteService.cliente.nombre}}</td>
+                        <th class="md:text-2xl sm:text-xl">Nombre</th>
+                        <td class="text-right text-xl">{{clienteService.cliente.nombre}}</td>
                     </tr>
                     <tr>
-                        <th>Documento</th>
-                        <td>{{clienteService.cliente.documento}}</td>
+                        <th class="md:text-2xl sm:text-xl">Documento</th>
+                        <td class="text-right text-xl">{{clienteService.cliente.documento}}</td>
                     </tr>
                     <tr>
-                        <th>Correo</th>
-                        <td>{{clienteService.cliente.correo}}</td>
+                        <th class="md:text-2xl sm:text-xl">Correo</th>
+                        <td class="text-right text-xl">{{clienteService.cliente.correo}}</td>
                     </tr>
                     <tr>
-                        <th>Ciudad</th>
-                        <td>{{clienteService.cliente.ciudad}}</td>
+                        <th class="md:text-2xl sm:text-xl">Ciudad</th>
+                        <td class="text-right text-xl">{{clienteService.cliente.ciudad}}</td>
                     </tr>
                     <tr>
-                        <th>Direccion</th>
-                        <td>{{clienteService.cliente.direccion}}</td>
+                        <th class="md:text-2xl sm:text-xl">Direccion</th>
+                        <td class="text-right text-xl">{{clienteService.cliente.direccion}}</td>
                       </tr>
                     <tr>
-                      <th>Telefono</th>
-                      <td>{{clienteService.cliente.telefono}}</td>
+                      <th class="md:text-2xl sm:text-xl">Telefono</th>
+                      <td class="text-right text-xl">{{clienteService.cliente.telefono}}</td>
                     </tr>
-                    <tr>
-                        <th>Lista de pedidos hechos</th>
-                            <td>
-                                <ul>
-                                    <li>
-                               <!--{{clienteService.cliente.pedidos}}--> 
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
+                </tbody>
                 </table>
             </div>
         </div>
+        <div class=" md:ml-10 bg-white rounded-lg shadow-md aspect-auto md:w-2/5 min-h-96 max-h-fit" >
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end">
+                <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">
+                    Pedidos hechos
+                </h1>
+                @for (pedidos of clienteService.cliente.refpedido; track pedidos) {
+                    <thead>
+                        <th>Referencia</th>
+                        <th>Total</th>
+                        <th>Fecha</th>
+                    </thead>
+                    <tbody class="divide-y text-center">
+                    <tr>
+                        <td>
+                            {{pedidos}}
+                        </td>
+                        <td>
+                            <!--{{pedidos}}-->
+                        </td>
+                        <td>
+                            <!--{{pedidos}}-->
+                        </td>
+                    </tr>
+                </tbody>}
+            </div>
+        </div>
     </div>
+  
 </section>
