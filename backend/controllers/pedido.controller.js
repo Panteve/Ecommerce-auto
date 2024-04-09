@@ -53,9 +53,6 @@ pedidoCtrl.createPedido = async (req, res) =>{
             total += producto.precio * productoPedido.cantidad;
         }
 
-
-        
-
         const nuevoPedido = new Pedido({
             refpedido: nuevaReferencia,
             fechacreacion: new Date(),
@@ -67,8 +64,14 @@ pedidoCtrl.createPedido = async (req, res) =>{
         })
 
         const data = await nuevoPedido.save()
-        await Cliente.findOneAndUpdate({documento : cliente.documento}, { $push: { refpedido: data.refpedido } });
-
+        await Cliente.findOneAndUpdate({documento : cliente.documento},
+            { $push: { 
+                pedidos: {
+                    refpedido: data.refpedido,
+                    fecha: data.fechacreacion,
+                    total: data.total
+                }
+        }});
         res.json({
             status: 'Pedido creado exitosamente',
             data: data
@@ -113,7 +116,7 @@ pedidoCtrl.eliminarPedido = async (req, res) => {
         }
 
         const clienteId = pedido.documentoDueño;
-
+        if(pedido.estado){
         if (clienteId) {
             await Cliente.findOneAndUpdate({documento: clienteId }, { $pull: { refpedido: pedido.refpedido } })
             pedido.estado = false 
@@ -125,6 +128,10 @@ pedidoCtrl.eliminarPedido = async (req, res) => {
             res.json({
                 status: 'Pedido no encontrado para eliminar',
             });
+        }}else{
+            res.json({
+                status: 'Pedido ya eliminado'
+            })
         }
     } catch (error) {
         res.json({

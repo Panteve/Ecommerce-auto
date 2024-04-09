@@ -9,7 +9,12 @@ const ClienteSchema = new Schema({
     direccion: { type: String, required: true },
     telefono: { type: Number, required: true },
     contrasena: { type: String, required: true },
-    refpedido: [{ type: Schema.Types.String, ref: 'Pedido', required: false }],
+    pedidos: [{
+        refpedido:{ type: Schema.Types.String, ref: 'Pedido', required: false },
+        fecha: { type: Date, required: true },
+        total: { type: Number, required: true }
+        
+    }],
 });
 
 module.exports = mongoose.model('cliente', ClienteSchema);
