@@ -1,41 +1,41 @@
 <section>
     <div class="md:flex md:items-center md:justify-center px-6 py-8 md:mx-auto md:h-screen ">
-        <div class=" mb-7 md:my-14 bg-white rounded-lg shadow-md aspect-auto max-h-fit">
+        <div class="mb-7 md:my-14 bg-white rounded-lg shadow-md aspect-auto max-h-fit">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end ">
                 <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">
                     Mi cuenta
                 </h1>
-                <table class="table table-auto">
+                <table class="table table-fixed md:max-w-2xl">
                     <tbody class="divide-y">
                     <tr>
                         <th class="md:text-2xl sm:text-xl">Nombre</th>
-                        <td class="text-center text-xl">{{clienteService.cliente.nombre}}</td>
+                        <td class="sm:text-left md:text-right md:text-xl sm:text-sm">{{clienteService.cliente.nombre}}</td>
                     </tr>
                     <tr>
                         <th class="md:text-2xl sm:text-xl">Documento</th>
-                        <td class="text-center text-xl">{{clienteService.cliente.documento}}</td>
+                        <td class="sm:text-left md:text-right md:text-xl sm:text-sm">{{clienteService.cliente.documento}}</td>
                     </tr>
                     <tr>
                         <th class="md:text-2xl sm:text-xl">Correo</th>
-                        <td class="text-center text-xl">{{clienteService.cliente.correo}}</td>
+                        <td class="sm:text-left md:text-right md:text-xl sm:text-sm">{{clienteService.cliente.correo}}</td>
                     </tr>
                     <tr>
                         <th class="md:text-2xl sm:text-xl">Ciudad</th>
-                        <td class="text-center text-xl">{{clienteService.cliente.ciudad}}</td>
+                        <td class="sm:text-left md:text-right md:text-xl sm:text-sm">{{clienteService.cliente.ciudad}}</td>
                     </tr>
                     <tr>
                         <th class="md:text-2xl sm:text-xl">Direccion</th>
-                        <td class="text-center text-xl">{{clienteService.cliente.direccion}}</td>
+                        <td class="sm:text-left md:text-right md:text-xl sm:text-sm">{{clienteService.cliente.direccion}}</td>
                       </tr>
                     <tr>
                       <th class="md:text-2xl sm:text-xl">Telefono</th>
-                      <td class="text-center text-xl">{{clienteService.cliente.telefono}}</td>
+                      <td class="sm:text-left md:text-right md:text-xl sm:text-sm">{{clienteService.cliente.telefono}}</td>
                     </tr>
                 </tbody>
                 </table>
             </div>
         </div>
-        <div class="content md:ml-10 bg-white rounded-lg shadow-md aspect-auto md:w-2/5 min-h-96 max-h-fit">
+        <div class="md:ml-10 bg-white rounded-lg shadow-md aspect-auto md:w-2/5 min-h-96 max-h-fit">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end">
                 <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">Pedidos hechos</h1>
                 <div class="overflow-x-auto">
@@ -49,7 +49,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @for (pedidos of clienteService.cliente.pedidos; track pedidos) {
-                            <tr [routerLink]="['/pedido', pedidos.refpedido]">
+                            <tr class="hover:bg-gray-200 cursor-pointer" [routerLink]="['/pedido', pedidos.refpedido]">
                                 <td class="px-4 py-2">{{ pedidos.refpedido }}</td>
                                 <td class="px-4 py-2">{{ pedidos.fecha | date:'dd/M/yyyy h:mm:ss a' }}</td>
                                 <td class="px-4 py-2">{{ pedidos.total }}</td>
