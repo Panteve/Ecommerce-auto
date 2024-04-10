@@ -1,1 +1,23 @@
-<p>pedido-info works!</p>
+<section class="h-screen flex flex-col justify-center ">
+    <div class="bg-white w-2/5  rounded-3xl mx-auto my-12">
+        <table class="table-auto w-full text-center">
+            <thead>
+                <tr class="divide-x text-2xl">
+                    <th class="px-4 py-2">Referencia</th>
+                    <th class="px-4 py-2">Fecha</th>
+                    <th class="px-4 py-2">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-t border-gray-200 divide-x text-xl">
+                    <td class="px-4 py-2">#{{ pedido?.refpedido }}</td>
+                    <td class="px-4 py-2">{{ pedido?.fechacreacion | date:'dd/M/yyyy h:mm:ss a' }}</td>
+                    <td class="px-4 py-2">{{ pedido?.total | currency:'':'symbol':'1.0-0'  }} COP</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <div class="bg-white w-4/5 h-4/5 rounded-lg mx-auto shadow-md"></div>
+</section>

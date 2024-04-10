@@ -67,6 +67,7 @@ pedidoCtrl.createPedido = async (req, res) =>{
         await Cliente.findOneAndUpdate({documento : cliente.documento},
             { $push: { 
                 pedidos: {
+                    _id: data._id,
                     refpedido: data.refpedido,
                     fecha: data.fechacreacion,
                     total: data.total
@@ -88,7 +89,14 @@ pedidoCtrl.createPedido = async (req, res) =>{
 //Conseguir un unico pedido
 pedidoCtrl.getUnicopedido = async (req, res) => {     
     try {
-        const pedidoUnico = await Pedido.findOne({ refpedido: req.params.refpedido });
+        const parametro = req.params.parametro
+
+        const pedidoUnico = await Pedido.findOne({ 
+            $or:[ 
+                {refpedido: parametro},
+                {_id: parametro}
+            ] 
+        });
         if (pedidoUnico) {
             res.json(pedidoUnico);
         } else {

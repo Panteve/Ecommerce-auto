@@ -11,13 +11,12 @@ export class ClienteService {
 
   readonly URL_API = environment.apiUrl ;
 
-  isLoggedIn = true
+  isLoggedIn = false
   cliente: any
-  pedidos: any
  
   constructor(private http: HttpClient) {}
 
-  loginCliente(documento:null,contrasena:string):Observable<any>{
+  loginCliente(documento:null,contrasena:string):Observable<any> {
      return this.http.post(`${this.URL_API}login`, { documento, contrasena })
       .pipe(
         tap((data: any) => {

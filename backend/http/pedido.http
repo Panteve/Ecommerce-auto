@@ -16,7 +16,7 @@ Content-Type: application/json
 
 ###
 //Conseguir un unico pedido
-GET http://localhost:3000/api/pedido/0001 HTTP/1.1
+GET http://localhost:3000/api/pedido/6616ba4d7cd39ffa737bb944 HTTP/1.1
 
 ###
 // Eliminar pedido

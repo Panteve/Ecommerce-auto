@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const PedidoSchema = new Schema({
+    _id: {type: mongoose.Schema.Types.ObjectId, auto:true, required: false},
     refpedido: {type:String, required:false},
     fechacreacion: {type:Date, required:false},
     total: {type:Number, required:false},

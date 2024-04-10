@@ -12,8 +12,12 @@ const ClienteSchema = new Schema({
     pedidos: [{
         refpedido:{ type: Schema.Types.String, ref: 'Pedido', required: false },
         fecha: { type: Date, required: true },
-        total: { type: Number, required: true }
-        
+        total: { type: Number, required: true },
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            auto: false,
+            required: false
+        }
     }],
 });
 
