@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, afterNextRender } from '@angular/core';
 import { ClienteService } from '../../../services/cliente.service';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-cliente-info',
@@ -13,6 +14,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class ClienteInfoComponent {
   public page!: number;
+  
+  cliente: any;
+  
  constructor(
   public clienteService: ClienteService
  ){}

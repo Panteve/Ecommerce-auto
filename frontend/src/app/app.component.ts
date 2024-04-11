@@ -1,6 +1,6 @@
-import { Component, Inject,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router'
-import { DOCUMENT, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { ClienteService } from './services/cliente.service';
 
 
@@ -18,6 +18,8 @@ export class AppComponent {
   ){}
 
   logout() {
+    localStorage.removeItem('logged')
+    localStorage.removeItem('info')
     this.clientService.isLoggedIn = false;
     }
 }
