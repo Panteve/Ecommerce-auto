@@ -11,13 +11,9 @@ const ClienteSchema = new Schema({
     contrasena: { type: String, required: true },
     pedidos: [{
         refpedido:{ type: Schema.Types.String, ref: 'Pedido', required: false },
-        fecha: { type: Date, required: true },
-        total: { type: Number, required: true },
-        _id: {
-            type: mongoose.Schema.Types.ObjectId,
-            auto: false,
-            required: false
-        }
+        fecha: { type: Date, required: false },
+        total: { type: Number, required: false },
+        _id: { type: mongoose.Schema.Types.ObjectId,auto: false,required: false }
     }],
 });
 

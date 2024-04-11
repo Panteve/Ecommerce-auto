@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet} from '@angular/router'
+import { Component, HostListener } from '@angular/core';
+import { Router, RouterLink, RouterOutlet} from '@angular/router'
 import { NgOptimizedImage } from '@angular/common';
 import { ClienteService } from './services/cliente.service';
 
@@ -12,14 +12,15 @@ import { ClienteService } from './services/cliente.service';
     imports: [RouterOutlet, RouterLink, NgOptimizedImage]
 })
 export class AppComponent {
-
   constructor(
-    public clientService: ClienteService
+    public clientService: ClienteService,
+    private router: Router
   ){}
-
-  logout() {
-    localStorage.removeItem('logged')
-    localStorage.removeItem('info')
-    this.clientService.isLoggedIn = false;
-    }
+  
+  logOut(){
+    this.clientService.isLoggedIn = false
+    sessionStorage.clear()
+    this.router.navigate(['/']);
+  }
 }
+

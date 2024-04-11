@@ -35,7 +35,7 @@
                 </table>
             </div>
         </div>
-        <div class="md:ml-10 bg-white rounded-lg shadow-md aspect-auto md:w-2/5 min-h-96 max-h-fit items-center">
+        <div class="md:ml-10 bg-white rounded-lg shadow-md aspect-auto md:w-2/5 min-h-96 max-h-fit">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end">
                 <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">Pedidos hechos</h1>
                 <div class="overflow-x-auto">
@@ -48,19 +48,18 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            @for (pedido of clienteService.cliente.pedidos | paginate: {itemsPerPage: 4, currentPage: page}; track pedido._id) {
+                            @for (pedido of clienteService.cliente?.pedidos | paginate: {itemsPerPage: 4, currentPage: page}; track pedido._id) {
                             <tr class="hover:bg-gray-200 cursor-pointer" [routerLink]="['/pedido', pedido._id]">
                                 <td class="px-4 py-2">{{ pedido.refpedido }}</td>
                                 <td class="px-4 py-2">{{ pedido.fecha | date:'dd/M/yyyy h:mm:ss a' }}</td>
                                 <td class="px-4 py-2">{{ pedido.total }}</td>
                             </tr>
                             }
-                            
                         </tbody>
                     </table>
                 </div>
             </div>
-            @if (clienteService.cliente.pedidos.length < 4) {
+            @if (clienteService.cliente?.pedidos.length < 4) {
             <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>}
         </div>
         

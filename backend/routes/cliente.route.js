@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-
 const clienteCtrl = require("../controllers/cliente.controller");
+const auth = require("../middleware/auth")
 
-router.get("/cliente", clienteCtrl.getCliente);
-router.post("/cliente", clienteCtrl.createCliente);
-router.get("/cliente/:documento", clienteCtrl.getUnicocliente);
-router.put("/cliente/:documento", clienteCtrl.editarCliente);
-router.delete("/cliente/:documento", clienteCtrl.eliminarCliente);
+router.get("/cliente", auth, clienteCtrl.getCliente);
+router.post("/cliente", auth, clienteCtrl.createCliente);
+router.get("/cliente/:documento", auth, clienteCtrl.getUnicocliente);
+router.put("/cliente/:documento", auth, clienteCtrl.editarCliente);
+router.delete("/cliente/:documento", auth, clienteCtrl.eliminarCliente);
 
 
 module.exports = router; 

@@ -23,7 +23,7 @@ export const routes: Routes = [
         component: RegisterComponent,
     },
     {
-        path: 'client-info',
+        path: 'mi-cuenta',
         title: 'SportLife-Cuenta',
         component: ClienteInfoComponent,
     },

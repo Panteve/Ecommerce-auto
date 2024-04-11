@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterContentInit, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common'
 import { ClienteService } from '../../../services/cliente.service';
 @Component({
@@ -8,12 +8,19 @@ import { ClienteService } from '../../../services/cliente.service';
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
-export class HomepageComponent {
+export class HomepageComponent implements AfterContentInit{
+  
+  isLogged:any
+
   constructor(
     public clientService: ClienteService
-  ){
-    
-
+  ){}
+  
+  ngAfterContentInit(): void {
+    this.isLogged = this.clientService.isLoggedIn
   }
+  
 
 }
+
+

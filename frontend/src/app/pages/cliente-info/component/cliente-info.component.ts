@@ -1,7 +1,7 @@
-import { Component, afterNextRender } from '@angular/core';
+import { AfterContentInit, Component, afterNextRender } from '@angular/core';
 import { ClienteService } from '../../../services/cliente.service';
 import { DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
@@ -12,13 +12,22 @@ import { NgxPaginationModule } from 'ngx-pagination';
   templateUrl: './cliente-info.component.html',
   styleUrl: './cliente-info.component.css'
 })
-export class ClienteInfoComponent {
+export class ClienteInfoComponent implements AfterContentInit{
   public page!: number;
   
   cliente: any;
   
  constructor(
-  public clienteService: ClienteService
+  public clienteService: ClienteService,
+  private router: Router
  ){}
+
+ ngAfterContentInit(): void {
+  if(!this.clienteService.isLoggedIn){
+     this.router.navigate([''])
+  }
+ }
+
+
 
 }

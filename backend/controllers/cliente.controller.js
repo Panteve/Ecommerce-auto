@@ -1,4 +1,5 @@
 const Cliente = require('../models/cliente');
+const bcrypt = require('bcrypt');
 const clienteCtrl = {};
 
 
@@ -33,9 +34,19 @@ clienteCtrl.createCliente = async (req, res) => {
             return res.json({
                 status: 'Cliente ya existente',
             });
-        } 
+        }  
 
-        const nuevoCliente = new Cliente(req.body);
+        const hashedPassword = await bcrypt.hash(req.body.contrasena, 10);
+
+        const nuevoCliente = new Cliente({
+            nombre: req.body.nombre ,
+            documento: req.body.documento ,
+            correo: req.body.correo ,
+            ciudad: req.body.ciudad ,
+            direccion: req.body.direccion,
+            telefono: req.body.telefono ,
+            contrasena: hashedPassword ,
+        });
         const data = await nuevoCliente.save();
 
         res.json({

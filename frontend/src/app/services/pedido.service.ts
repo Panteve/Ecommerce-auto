@@ -13,7 +13,7 @@ export class PedidoService {
   constructor(private http: HttpClient) { }
 
   unicoPedido(id: any):Observable<any> {
-    return this.http.get(`${this.URL_API}pedido/${id}`)     
+    return this.http.get(`${this.URL_API}/pedido/${id}`)     
   }
 }
 
