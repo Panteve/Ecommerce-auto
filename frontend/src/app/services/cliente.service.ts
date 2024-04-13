@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, afterNextRender, OnInit} from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { Injectable, afterNextRender} from '@angular/core';
+import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Cliente } from '../models/cliente'; 
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,22 +24,20 @@ export class ClienteService{
       if(this.clientInStr){
         this.cliente = JSON.parse(this.clientInStr);
       }
+      if (this.isLoggedIn === false){
+        sessionStorage.clear()
+      }
     })
   }
 
 
-  logOut(){
-    this.isLoggedIn = false
-    sessionStorage.clear()
-  }
-
-  loginCliente(documento:null,contrasena:string):Observable<any> {
+  loginCliente(documento:null,contrasena:string):Observable<any>{
      return this.http.post(`${this.URL_API}/login`, { documento, contrasena })
       .pipe(
         tap((data: any) => {
-          this.isLoggedIn = data.token !== undefined || null 
+          this.isLoggedIn = !!data.token 
           this.cliente = data.cliente;
-          if(this.isLoggedIn !== undefined || null  ){
+          if(this.isLoggedIn === true){
           sessionStorage.setItem('logged',this.isLoggedIn.toString())
           sessionStorage.setItem('token',data.token)
           sessionStorage.setItem('info',JSON.stringify(this.cliente))
@@ -46,12 +46,9 @@ export class ClienteService{
       )
     }
 
-    //registerCliente(Cliente:Cliente){
-    //  return this.http.post(`${this.URL_API}/cliente`, Cliente)
-    
-    //}
-
-
+   registerCliente(cliente:Cliente):Observable<any>{
+     return this.http.post(`${this.URL_API}/cliente`, cliente)
+    }
   }
 
   

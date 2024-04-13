@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet} from '@angular/router'
 import { NgOptimizedImage } from '@angular/common';
 import { ClienteService } from './services/cliente.service';
@@ -16,10 +16,11 @@ export class AppComponent {
     public clientService: ClienteService,
     private router: Router
   ){}
-  
+
   logOut(){
     this.clientService.isLoggedIn = false
     sessionStorage.clear()
+    window.location.reload();
     this.router.navigate(['/']);
   }
 }

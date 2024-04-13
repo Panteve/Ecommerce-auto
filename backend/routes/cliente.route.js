@@ -4,10 +4,10 @@ const clienteCtrl = require("../controllers/cliente.controller");
 const auth = require("../middleware/auth")
 
 router.get("/cliente", auth, clienteCtrl.getCliente);
-router.post("/cliente", auth, clienteCtrl.createCliente);
+router.post("/cliente", clienteCtrl.createCliente);
 router.get("/cliente/:documento", auth, clienteCtrl.getUnicocliente);
 router.put("/cliente/:documento", auth, clienteCtrl.editarCliente);
-router.delete("/cliente/:documento", auth, clienteCtrl.eliminarCliente);
+router.delete("/cliente/:documento", clienteCtrl.eliminarCliente);
 
 
 module.exports = router; 

@@ -1,29 +1,29 @@
 <section class="">
     <div class="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div class="relative w-full bg-white rounded-xl shadow-2xl border md:mt-0 sm:max-w-xl xl:p-0 ">
+        <div class="relative w-full bg-white rounded-xl  shadow-2xl border sm:max-w-xl xl:p-0 ">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
                     Registrate
                 </h1>
-                <form class="space-y-4 md:space-y-6" action="#">
+                <form class="space-y-4 md:space-y-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div class="md:flex flex-row justify-between">
-                        <div class="w-full md:w-3/6 md:mr-1">
+                        <div class="form-group w-full md:w-3/6 md:mr-1">
                             <label for="nombre" class="block mb-2 text-sm font-medium ">Nombre completo</label>
-                            <input type="text" name="nombre" id="nombre" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Jane Doe" required>
+                            <input formControlName="nombre" type="text" name="nombre" id="nombre" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Jane Doe">
                         </div>
-                        <div class="w-full md:w-3/6">
+                        <div class="form-group w-full md:w-3/6">
                             <label for="documento" class="block mb-2 text-sm font-medium ">Documento</label>
-                            <input type="number" name="documento" id="documento" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="9788561" required minlength="5">
+                            <input formControlName="documento" type="number" name="documento" id="documento" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="9788561">
                         </div>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="correo" class="block mb-2 text-sm font-medium">E-mail</label>
-                        <input type="email" name="correo" id="correo" placeholder="janeDoe@example.com" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" required>
+                        <input formControlName="correo" type="email" name="correo" id="correo" placeholder="janeDoe@example.com" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black">
                     </div>
                     <div class="md:flex md:flex-row md:justify-between">
-                        <div class="w-full md:w-3/6 md:mr-1 ">
+                        <div class="form-group w-full md:w-3/6 md:mr-1 ">
                             <label for="ciudad" class="block mb-2 text-sm font-medium">Ciudad</label>
-                            <select class="select select-bordered select-sm w-full max-w-xs text-white text-sm rounded-lg block h-10 bg-neutral-700 hover:bg-black " id="ciudad" required >
+                            <select formControlName="ciudad" name="ciudad" class="select select-bordered select-sm w-full max-w-xs text-white text-sm rounded-lg block h-10 bg-neutral-700 hover:bg-black " id="ciudad">
                                 <option value="" disabled selected hidden>-</option>
                                 <option value="Armenia">Armenia</option>
                                 <option value="Barranquilla">Barranquilla</option>
@@ -58,17 +58,17 @@
                                 <option value="Yopal">Yopal</option>
                             </select>
                         </div>
-                        <div class="w-full md:w-3/6">
+                        <div class="form-group w-full md:w-3/6">
                             <label for="telefono" class="block mb-2 text-sm font-medium ">Telefono</label>
-                            <input type="number" name="telefono" id="telefono" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="300968845" required minlength="8">
+                            <input formControlName="telefono" type="number" name="telefono" id="telefono" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="300968845">
                         </div>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="direccion" class="block mb-2 text-sm font-medium">Direccion</label>
-                        <input type="text" name="direccion" id="direccion" placeholder="Cra 7 # 107-89" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" required>
+                        <input formControlName="direccion" type="text" name="direccion" id="direccion" placeholder="Cra 7 # 107-89" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black">
                     </div>
                     <div>
-                        <div class="flex flex-row justify-between">
+                        <div class="form-group flex flex-row justify-between">
                             <label for="contrasena" class="block mb-2 text-sm font-medium">Contraseña</label>
                             <div class="dropdown md:dropdown-right md:dropdown-hover dropdown-top dropdown-end ">
                                 <span  aria-labelledby="Icono de informacion"tabindex="0" role="button" class="badge badge-lg indicator-item ml-1 border-none"><img ngSrc="../assets/info-icon-svgrepo-com.svg" width="24" height="24" alt="Svg de icono de informacion para mostrar parametros para crear la contraseña"></span>
@@ -84,8 +84,18 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="password" name="contrasena" id="contrasena" placeholder="•••••••••" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$">
+                        <input formControlName="contrasena" type="password" name="contrasena" id="contrasena" placeholder="•••••••••" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" [pattern]="'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$'">
                     </div>
+                    @if (clienteExiste){<div class="toast toast-end toast-middle">
+                        <div class="alert alert-info bg-red-500 font-bold hover:cursor-pointer hover:bg-red-300 hover:text-gray-400" (click)="clienteExiste = false">
+                          <span>Ya existe una cuenta con ese documento</span>
+                        </div>
+                      </div>}
+                    @if (invalidForm){<div class="toast toast-end toast-middle">
+                        <div class="alert alert-info bg-red-500 font-bold hover:cursor-pointer hover:bg-red-300 hover:text-gray-400" (click)="invalidForm = false" >
+                          <span>Todos lo espacios son obligatorios</span>
+                        </div>
+                      </div>}
                     <button type="submit" class="btn btn-md md:btn-lg w-full text-white bg-black hover:bg-neutral-700">Registrarse</button>
                     <p class="text-lg  font-light text-gray-500">
                         Ya tienes una cuenta? <a class="font-medium text-gray-500 hover:underline hover:cursor-pointer hover:text-black" routerLink="/login" >Inicia sesion</a>

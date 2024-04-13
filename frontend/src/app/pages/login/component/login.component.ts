@@ -1,9 +1,8 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ClienteService } from '../../../services/cliente.service'
 import { FormsModule } from '@angular/forms';
 
-declare var M: any;
 
 @Component({
   selector: 'app-login',
@@ -16,6 +15,7 @@ export class LoginComponent implements AfterContentInit{
 
   cliente = { documento: null, contrasena: '' };
   data: any
+  response: boolean = false
   
   constructor(
     private clienteService: ClienteService,
@@ -28,11 +28,21 @@ export class LoginComponent implements AfterContentInit{
    }
   }
 
+  ngOnDestroy(): void {
+    this.response = false
+  }
+
 
   onSubmit() {
     this.clienteService.loginCliente(this.cliente.documento, this.cliente.contrasena)
-    .subscribe( response => {
+    .subscribe(response => {
+      if(response.status){
+        this.response = true
+        this.cliente.documento = null;
+        this.cliente.contrasena = '';
+      }else{
       this.router.navigate(['/']);
+    }
     }, error => {
       console.error(error);
     });

@@ -32,10 +32,9 @@ clienteCtrl.createCliente = async (req, res) => {
         
         if (clienteExistente) {
             return res.json({
-                status: 'Cliente ya existente',
+                error: 'Existe',message: 'Ya existe una cuenta con ese documento' 
             });
         }  
-
         const hashedPassword = await bcrypt.hash(req.body.contrasena, 10);
 
         const nuevoCliente = new Cliente({
@@ -50,13 +49,12 @@ clienteCtrl.createCliente = async (req, res) => {
         const data = await nuevoCliente.save();
 
         res.json({
-            status: 'Cliente registrado',
-            data: data
+            status: 'Registro de cliente exitoso'
         });
     } catch (error) {
         res.json({
-            status: 'Error al registrar cliente',
-            error: error.message
+            error: 'Error al registrar cliente',
+            message: error.message
         });
     }
 }
