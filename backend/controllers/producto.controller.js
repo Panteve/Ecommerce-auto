@@ -81,6 +81,7 @@ productoCtrl.getUnicoProductos = async (req,res) =>{
 
         const productoUnico = await Producto.find({
             $or:[
+                {_id: parametro},
                 {proveedor: parametro},
                 {nombre: parametro},
                 {refproducto: parametro}      

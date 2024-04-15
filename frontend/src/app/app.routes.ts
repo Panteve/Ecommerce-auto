@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/component/login.component';
 import { RegisterComponent } from './pages/register/component/register.component'
 import { ClienteInfoComponent } from './pages/cliente-info/component/cliente-info.component';
 import { PedidoInfoComponent } from './pages/pedido-info/component/pedido-info.component';
+import { ProductosComponent } from './pages/productos/component/productos.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,12 @@ export const routes: Routes = [
         title: 'SportLife-Informacion del pedido',
         component: PedidoInfoComponent,
     },
+    {
+        path: 'productos',
+        title: 'SportLife-Productos',
+        component: ProductosComponent,
+    },
 ];
+
 
 
