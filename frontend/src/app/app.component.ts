@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet} from '@angular/router'
 import { NgOptimizedImage } from '@angular/common';
 import { ClienteService } from './services/cliente.service';
+import { CarritoService } from './services/carrito.service';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { ClienteService } from './services/cliente.service';
 })
 export class AppComponent {
   constructor(
+    public carritoService: CarritoService,
     public clientService: ClienteService,
     private router: Router
   ){}
