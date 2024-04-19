@@ -10,10 +10,14 @@ export class ProductosService {
 
   readonly URL_API = environment.apiUrl ;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient){}
 
   getProductos():Observable<any>{
     return this.http.get(`${this.URL_API}/producto`)
+  }
+
+  getUnicoProducto(id:any):Observable<any>{
+    return this.http.get(`${this.URL_API}/producto/${id}`)
   }
 
 }

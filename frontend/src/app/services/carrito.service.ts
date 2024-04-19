@@ -5,7 +5,7 @@ import { Injectable, afterNextRender } from '@angular/core';
 })
 export class CarritoService {
   enCarrito: any = [];
-  numeroEnCarrito:any
+  numeroEnCarrito:number = 0
   total:any
   
   constructor() {

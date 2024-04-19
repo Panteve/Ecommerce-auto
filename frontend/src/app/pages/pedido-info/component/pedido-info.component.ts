@@ -22,7 +22,7 @@ export class PedidoInfoComponent {
     private route: ActivatedRoute,
     public pedidoService: PedidoService
   ){}
-  
+
   ngAfterContentInit(): void {
     if(this.clienteService.isLoggedIn){
        this.router.navigate([''])

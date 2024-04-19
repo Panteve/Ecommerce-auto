@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 //Conseguir un unico producto
-GET http://localhost:3000/api/producto/6605d95c760b4bac4e6a791b HTTP/1.1
+GET http://localhost:3000/api/producto/NK109 HTTP/1.1
 
 ###
 //Actualizar admin

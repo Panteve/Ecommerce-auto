@@ -1,4 +1,4 @@
-<section class="sm:h-auto md:h-screen w-auto bg-gradient-to-b from-blue-600 from via-sky-500 via to-emerald-400 to">
+<section class="sm:h-auto md:h-screen w-auto" id="background">
     @if (espera) {<div class="flex justify-center items-center h-full">
         <div class="bg-gray-200 w-32 h-32 flex justify-center rounded-lg">
             <span class="loading loading-spinner loading-lg"></span>
@@ -7,14 +7,14 @@
 }@else{<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
         @for (producto of productos; track producto._id ) {
                         <div class="bg-white rounded-lg overflow-hidden shadow-md mx-4 my-2">
-                            <img [ngSrc]=" producto.imagen[0] " alt="{{ producto.nombre }}" width="900" height="666" class="w-full h-72 object-cover" priority="">
+                            <img [ngSrc]=" producto.imagen[0] " alt="{{ producto.nombre }}" width="900" height="666" routerLink="/productos/{{producto._id}}" class="w-full h-72 object-cover hover:cursor-pointer" priority="">
                             <div class="p-4">
-                                <h3 class="text-xl font-semibold mb-2">{{ producto.nombre }}</h3>
-                                <p>{{producto.proveedor}}</p>
+                                <h3 class="text-xl font-semibold mb-2 hover:cursor-pointer" routerLink="/productos/{{producto.refproducto}}">{{ producto.nombre }}</h3>
+                                <p class="text-amber-600 font-medium">{{producto.proveedor}}</p>
                                 <section class="flex  justify-between">
                                     <div class="flex items-center">
                                         <h3 class="font-semibold text-lg mr-2">Precio:</h3>
-                                        <p class="text-gray-600">{{ producto.precio | currency:'':'symbol':'1.0-0' }}</p>
+                                        <p class="text-gray-600 font-medium">{{ producto.precio | currency:'':'symbol':'1.0-0' }}</p>
                                     </div>
                                     <div>
                                         <button class="btn btn-square btn-outline border-blue-700 bg-blue-700 ">

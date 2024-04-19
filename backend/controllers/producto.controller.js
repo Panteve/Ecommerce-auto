@@ -81,10 +81,11 @@ productoCtrl.getUnicoProductos = async (req,res) =>{
 
         const productoUnico = await Producto.find({
             $or:[
-                {_id: parametro},
+                {refproducto: parametro},
+                {_id: parametro},   
                 {proveedor: parametro},
                 {nombre: parametro},
-                {refproducto: parametro}      
+                
             ]
         })
         if(productoUnico && productoUnico.length > 0){
