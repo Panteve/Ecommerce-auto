@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet} from '@angular/router'
-import { NgOptimizedImage } from '@angular/common';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { ClienteService } from './services/cliente.service';
 import { CarritoService } from './services/carrito.service';
 
@@ -10,7 +10,7 @@ import { CarritoService } from './services/carrito.service';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, RouterLink, NgOptimizedImage]
+    imports: [RouterOutlet, RouterLink, NgOptimizedImage, CurrencyPipe]
 })
 export class AppComponent {
   constructor(

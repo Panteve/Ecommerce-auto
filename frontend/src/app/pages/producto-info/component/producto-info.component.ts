@@ -23,7 +23,6 @@ export class ProductoInfoComponent {
       let id = params['refproducto'] 
       this.productoInfoService.getUnicoProducto(id).subscribe(producto => {
         this.producto = producto
-        console.log(this.producto)
       });
     });
   }
