@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet} from '@angular/router'
+import { RouterLink, RouterOutlet} from '@angular/router'
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { ClienteService } from './services/cliente.service';
 import { CarritoService } from './services/carrito.service';
@@ -16,14 +16,13 @@ export class AppComponent {
   constructor(
     public carritoService: CarritoService,
     public clientService: ClienteService,
-    private router: Router
+
   ){}
 
   logOut(){
     this.clientService.isLoggedIn = false
     sessionStorage.clear()
     window.location.reload();
-    this.router.navigate(['/']);
   }
 }
 

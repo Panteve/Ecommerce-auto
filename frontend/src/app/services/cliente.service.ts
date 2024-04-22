@@ -24,9 +24,6 @@ export class ClienteService{
       if(this.clientInStr){
         this.cliente = JSON.parse(this.clientInStr);
       }
-      if (this.isLoggedIn === false){
-        sessionStorage.clear()
-      }
     })
   }
 
@@ -38,9 +35,7 @@ export class ClienteService{
           this.isLoggedIn = !!data.token 
           this.cliente = data.cliente;
           if(this.isLoggedIn === true){
-          sessionStorage.setItem('logged',this.isLoggedIn.toString())
-          sessionStorage.setItem('token',data.token)
-          sessionStorage.setItem('info',JSON.stringify(this.cliente))
+            this.guardarSessionStorage(data.token)
           }
         })
       )
@@ -49,6 +44,12 @@ export class ClienteService{
    registerCliente(cliente:Cliente):Observable<any>{
      return this.http.post(`${this.URL_API}/cliente`, cliente)
     }
+    private guardarSessionStorage(data:any){
+      sessionStorage.setItem('logged',this.isLoggedIn.toString())
+      sessionStorage.setItem('token',data)
+      sessionStorage.setItem('info',JSON.stringify(this.cliente))
+    }
+    
   }
 
   

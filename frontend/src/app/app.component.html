@@ -30,7 +30,7 @@
       <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 shadow bg-white shadow-gray-500">
         <div class="card-body">
           <span class="font-bold text-lg">{{carritoService.numeroEnCarrito}} productos</span>
-          <span class="text-info">Total: @if (carritoService.total < 1500000) { {{carritoService.total | currency:'':'symbol':'1.0-0' }} }@else{ +$15M }</span>
+          <span class="text-info">Total: @if (carritoService.total < 15000000) { {{carritoService.total | currency:'':'symbol':'1.0-0' }} }@else{ +$15M }</span>
           <div class="card-actions">
             <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 font-bold ">Ver carrito</button>
           </div>

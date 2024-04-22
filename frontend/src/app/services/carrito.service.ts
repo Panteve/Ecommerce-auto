@@ -8,17 +8,15 @@ export class CarritoService {
   numeroEnCarrito:number = 0
   total:number = 0
   carritoJSON: any 
-  numeroCarritoJSON: any = 0
   
   constructor() {
     afterNextRender(()=>{
       this.carritoJSON = sessionStorage.getItem('carrito');
-      this.numeroCarritoJSON = sessionStorage.getItem('numeroCarrito')
-      if(this.carritoJSON && this.numeroCarritoJSON){
+      if(this.carritoJSON ){
         this.enCarrito = this.enCarrito = JSON.parse(this.carritoJSON);
-        this.numeroEnCarrito = JSON.parse(this.numeroCarritoJSON);
       };
-   
+      this.cantidadCarrrito()
+      this.calcularTotal()
     })
   }
 
@@ -56,10 +54,8 @@ export class CarritoService {
 
 
   private guardarSessionStorage(){
-    const numeroCarritoJSON = JSON.stringify(this.numeroEnCarrito);
     const carritoJSON = JSON.stringify(this.enCarrito);
     sessionStorage.setItem('carrito',carritoJSON)
-    sessionStorage.setItem('numeroCarrito',numeroCarritoJSON)
   }
 
 }
