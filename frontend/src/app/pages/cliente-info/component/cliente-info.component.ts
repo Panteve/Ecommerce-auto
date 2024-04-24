@@ -1,5 +1,5 @@
-import { AfterContentInit, Component, afterNextRender } from '@angular/core';
-import { ClienteService } from '../../../services/cliente.service';
+import { AfterContentInit, Component } from '@angular/core';
+import { ClienteService } from '@services/cliente.service';
 import { DatePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';

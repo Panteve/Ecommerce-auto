@@ -1,6 +1,6 @@
 import { AfterContentInit, Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { ClienteService } from '../../../services/cliente.service'
+import { ClienteService } from '@services/cliente.service'
 import { FormsModule } from '@angular/forms';
 
 

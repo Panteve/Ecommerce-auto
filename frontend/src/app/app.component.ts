@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router'
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
-import { ClienteService } from './services/cliente.service';
-import { CarritoService } from './services/carrito.service';
+import { ClienteService } from '@services/cliente.service';
+import { CarritoService } from '@services/carrito.service';
 
 
 @Component({

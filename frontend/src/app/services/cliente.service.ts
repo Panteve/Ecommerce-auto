@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, afterNextRender} from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { Cliente } from '../models/cliente'; 
+import { environment } from '@environments/environment';
+import { Cliente } from '@models/cliente'; 
 
 
 @Injectable({

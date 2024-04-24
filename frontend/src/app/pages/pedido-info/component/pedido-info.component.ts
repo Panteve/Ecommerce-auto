@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PedidoService } from '../../../services/pedido.service';
+import { PedidoService } from '@services/pedido.service';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { ClienteService } from '../../../services/cliente.service';
+import { ClienteService } from '@services/cliente.service';
 
 
 @Component({

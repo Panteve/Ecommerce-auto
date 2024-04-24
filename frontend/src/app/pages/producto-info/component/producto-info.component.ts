@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductosService } from '../../../services/productos.service';
+import { ProductosService } from '@services/productos.service';
 
 @Component({
   selector: 'app-producto-info',

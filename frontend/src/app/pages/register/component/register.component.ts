@@ -1,10 +1,9 @@
 import { AfterContentInit, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Router, RouterLink, RouterOutlet} from '@angular/router';
-import { Cliente } from '../../../models/cliente';
-import { ClienteService } from '../../../services/cliente.service';
+import { Cliente } from '@models/cliente';
+import { ClienteService } from '@services/cliente.service';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { toUSVString } from 'util';
 
 
 @Component({

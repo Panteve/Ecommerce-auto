@@ -1,6 +1,6 @@
 import { AfterContentInit, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common'
-import { ClienteService } from '../../../services/cliente.service';
+import { ClienteService } from '@services/cliente.service';
 import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-homepage',
