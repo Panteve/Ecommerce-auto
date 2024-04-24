@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://backend-drab-zeta.vercel.app/api'
+    apiUrl: 'https://backend-orpin-iota.vercel.app/api'
   };
   
