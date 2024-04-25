@@ -42,7 +42,7 @@ export class CarritoService {
     this.enCarrito = [];
   }
 
-
+  //Funciones privadas
 
   private cantidadCarrrito(){
     this.numeroEnCarrito = this.enCarrito.reduce((total: number, elem: { cantidad: any; }) => total + elem.cantidad, 0);

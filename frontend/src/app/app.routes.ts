@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomepageComponent } from './pages/home/component/homepage.component';
-import { LoginComponent } from './pages/login/component/login.component';
-import { RegisterComponent } from './pages/register/component/register.component'
-import { ClienteInfoComponent } from './pages/cliente-info/component/cliente-info.component';
-import { PedidoInfoComponent } from './pages/pedido-info/component/pedido-info.component';
-import { ProductosComponent } from './pages/productos/component/productos.component';
-import { ProductoInfoComponent } from './pages/producto-info/component/producto-info.component';
+import { HomepageComponent } from './pages/home/homepage.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component'
+import { ClienteInfoComponent } from './pages/cliente-info/cliente-info.component';
+import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
+import { ProductosComponent } from './pages/productos/productos.component';
+import { ProductoInfoComponent } from './pages/producto-info/producto-info.component';
 
 export const routes: Routes = [
     {
