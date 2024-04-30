@@ -20,12 +20,18 @@ export class CarritoService {
     })
   }
 
-  agregarAlCarrito(producto: any, cantidad:number) {
+  agregarAlCarrito(producto: any, cantidad:number, desdeCarrito?:boolean) {
     const index = this.enCarrito.findIndex((p: { _id: string; }) => p._id === producto._id)
-    if(index !== -1){
-      this.enCarrito[index].cantidad += cantidad
+    if(desdeCarrito){
+      this.enCarrito[index].cantidad = cantidad
     }else{
-      this.enCarrito.push({ ...producto, cantidad })
+      if(index !== -1){
+        if(this.enCarrito[index].cantidad < 10){
+        this.enCarrito[index].cantidad += cantidad
+        }
+      }else{
+        this.enCarrito.push({ ...producto, cantidad })
+      }
     }
     this.cantidadCarrrito()
     this.calcularTotal()

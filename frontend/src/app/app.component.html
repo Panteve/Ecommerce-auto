@@ -12,7 +12,7 @@
         <img src="../assets/menu-alt-1-svgrepo-com.svg" class="h-12 w-12" >
       </div>
       <ul tabindex="0" class="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Carrito</a></li>
+        <li><a routerLink="/carrito">Carrito</a></li>
         <li><a routerLink="/productos">Productos</a></li>
         <li><a routerLink="/mi-cuenta">Mi cuenta</a></li>
       </ul>
@@ -32,7 +32,7 @@
           <span class="font-bold text-lg">{{carritoService.numeroEnCarrito}} productos</span>
           <span class="text-info">Total: @if (carritoService.total < 15000000) { {{carritoService.total | currency:'':'symbol':'1.0-0' }} }@else{ +$15M }</span>
           <div class="card-actions">
-            <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 font-bold ">Ver carrito</button>
+            <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 font-bold " routerLink="/carrito">Ver carrito</button>
           </div>
         </div>
       </div>

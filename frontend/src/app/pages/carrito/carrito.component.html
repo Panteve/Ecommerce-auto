@@ -1,1 +1,47 @@
-<p>carrito works!</p>
+<section class="h-auto flex flex-col lg:flex-row justify-center " id="fondo">
+        <div class="bg-white rounded-xl md:rounded-3xl md:mx-5 md:my-6 mx-2 my-2 lg:w-3/6 h-fit">
+            <div class=" space-y-4 md:space-y-6 sm:p-4 overflow-x-auto">
+                <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">
+                    Carrito de compras
+                </h1>
+                <table class="table table-auto ">
+                    <tbody>
+                    @for (producto of carritoService.enCarrito; track producto._id) {
+                        <tr>
+                            <td class="flex">
+                                <img [ngSrc]="producto?.imagen[0]" [alt]="producto?.nombre" width="150" height="100" class="hover:cursor-pointer aspect-auto md:w-40 rounded-xl mr-4" routerLink="/productos/{{producto._id}}" priority="">
+                                <section class="flex flex-col grow">
+                                    <div class="flex flex-col gap-3 mt-5 ">
+                                        <div class="flex flex-col-reverse md:flex-row  justify-between">
+                                            <div class="hover:cursor-pointer" routerLink="/productos/{{producto._id}}">
+                                                <h1 class="font-bold text-xl">{{producto?.nombre}}</h1>
+                                                <h2 class="text-amber-700 font-medium text-lg">{{producto?.proveedor}}</h2> 
+                                                <h4 class="text-gray-500 font-normal text-base">{{(producto?.descripcion).slice(0,30)}}...</h4> 
+                                            </div>
+                                            <span class="text-base font-semibold ">
+                                                {{producto?.precio * producto?.cantidad | currency:'':'symbol':'1.0-0' }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p class="font-normal text-base"><label for="cantidad">Cantidad:</label>
+                                            <select class="select select-sm" name="cantidad" id="cantidad" (change)="onChange($event, producto)">
+                                                @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
+                                                    <option value="{{i}}" [selected]="i == producto?.cantidad">{{i}}</option>
+                                                }
+                                            </select> </p>
+                                            <span class="font-light text-base">Precio unitario: {{producto?.precio | currency:'':'symbol':'1.0-0' }}</span>
+                                        </div>
+                                    </div>     
+                                </section>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mb-7 md:my-14 bg-white rounded-lg shadow-md aspect-auto h-fit  md:w-2/5 ">
+            asdasdasdadasdad
+        </div>
+        
+</section>

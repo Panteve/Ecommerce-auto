@@ -6,6 +6,7 @@ import { ClienteInfoComponent } from './pages/cliente-info/cliente-info.componen
 import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { ProductoInfoComponent } from './pages/producto-info/producto-info.component';
+import { CarritoComponent } from '@pages/carrito/carrito.component';
 
 export const routes: Routes = [
     {
@@ -43,6 +44,11 @@ export const routes: Routes = [
         path: 'productos/:refproducto',
         title: 'SportLife-Producto ',
         component: ProductoInfoComponent,
+    },
+    {
+        path: 'carrito',
+        title: 'SportLife-Mi carrito',
+        component: CarritoComponent,
     },
 ];
 
