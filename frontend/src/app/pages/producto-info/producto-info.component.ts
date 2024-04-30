@@ -22,7 +22,7 @@ export class ProductoInfoComponent {
     this.route.params.subscribe(params => {
       let id = params['refproducto'] 
       this.productoInfoService.getUnicoProducto(id).subscribe(producto => {
-        this.producto = producto
+        this.producto = producto[0]
       });
     });
   }
