@@ -9,7 +9,7 @@
                         <div class="bg-white rounded-lg overflow-hidden shadow-md mx-4 my-2">
                             <img [ngSrc]=" producto.imagen[0] " alt="{{ producto.nombre }}" width="900" height="666" routerLink="/productos/{{producto._id}}" class="w-full h-72 object-cover hover:cursor-pointer" priority="">
                             <div class="p-4">
-                                <h3 class="text-xl font-semibold mb-2 hover:cursor-pointer" routerLink="/productos/{{producto.refproducto}}">{{ producto.nombre }}</h3>
+                                <h3 class="text-xl font-semibold mb-2 hover:cursor-pointer" routerLink="/productos/{{producto._id}}">{{ producto.nombre }}</h3>
                                 <p class="text-amber-600 font-medium">{{producto.proveedor}}</p>
                                 <section class="flex  justify-between">
                                     <div class="flex items-center">

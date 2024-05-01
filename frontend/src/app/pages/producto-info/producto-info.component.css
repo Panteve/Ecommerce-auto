@@ -1,3 +1,25 @@
 #background {
     background-image: radial-gradient(circle, #6EE7B7, #3B82F6);
   }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Estilo para la pista (track) de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    border-top-right-radius: 0.5rem/* 8px */;
+    border-bottom-right-radius: 0.5rem/* 8px */;
+    background: #000; 
+}
+ 
+/* Estilo para la manija (thumb) de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: #555; 
+}
+
+/* Estilo para la manija (thumb) de la barra de desplazamiento al pasar el mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
