@@ -14,7 +14,7 @@ app.set("port", process.env.PORT || 3000);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(compression());
-app.use(cors({ origin: "https://ecommerce-pantv-j0q94eipt-panteves-projects.vercel.app" }));
+app.use(cors("*"));//{ origin: "https://ecommerce-pantv-j0q94eipt-panteves-projects.vercel.app" }
 
 //Conexión BD Atlas
 mongoose.connect(process.env.MONGODB_URI)
