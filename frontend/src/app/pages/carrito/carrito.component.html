@@ -11,6 +11,8 @@
                 <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">
                     Carrito de compra
                 </h1>
+                @if (!carritoService.existeCarrito) {<h2 class="text-lg font-semibold text-center leading-tight tracking-tight">No hay productos en tu carrito de compra</h2>}
+                
                 <table class="table table-auto">
                     <tbody>
                     @for (producto of carritoService.enCarrito; track producto._id) {
@@ -55,11 +57,11 @@
             <section class="space-y-1">
                 <article class="flex justify-between">
                     <h2 class="font-medium">Subtotal:</h2>
-                    <span>{{subTotal()| currency:'':'symbol':'1.0-0'}}</span>
+                    <span>{{subTotal() === 0 ? '-' : (subTotal() | currency:'':'symbol':'1.0-0')}}</span>
                 </article>
                 <article class="flex justify-between">
                     <h2 class="font-medium">IVA:</h2>
-                    <span>{{iva| currency:'':'symbol':'1.0-0'}}</span>
+                    <span>{{iva === 0 ? '-' : (iva | currency:'':'symbol':'1.0-0')}}</span>
                 </article>
                 <article class="flex justify-between">
                     <h2 class="font-medium">Gastos de envio: </h2>
@@ -69,15 +71,15 @@
             <section class="space-y-1">
                 <article class="flex justify-between">
                     <h2 class="font-medium">Descuento por oferta especial:</h2>
-                    <span>{{descuento| currency:'':'symbol':'1.0-0'}}</span>
+                    <span>{{descuento === 0 ? '-' : (descuento | currency:'':'symbol':'1.0-0')}}</span>
                 </article>
                 <article class="flex justify-between">
                     <h2 class="font-bold">Total:</h2>
-                    <span>{{total| currency:'':'symbol':'1.0-0'}}</span>
+                    <span>{{total === 0 ? '-' : (total | currency:'':'symbol':'1.0-0')}}</span>
                 </article>
             </section>
             <section class="flex justify-center pt-4 ">
-                <button class="btn btn-wide bg-black text-white hover:text-black rounded-full" >Pagar</button>
+                <button class="btn btn-wide bg-black text-white hover:text-black rounded-full" [ngClass]="{'btn-disabled': !carritoService.existeCarrito }">Pagar</button>
             </section>
         </div>
         

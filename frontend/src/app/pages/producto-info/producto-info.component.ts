@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductosService } from '@services/productos.service';
 
@@ -22,10 +22,6 @@ export class ProductoInfoComponent {
     private route: ActivatedRoute,
     private productoInfoService: ProductosService
   ){
-    
-  }
-
-  ngOnInit(): void {
     this.route.params.subscribe(params => {
       let id = params['refproducto'] 
       this.productoInfoService.getUnicoProducto(id)
@@ -36,6 +32,7 @@ export class ProductoInfoComponent {
       });
     });
   }
+  
   seleccionado(imagen:string){
     this.index = this.producto.imagen.indexOf(imagen)
     this.imageSelected = imagen

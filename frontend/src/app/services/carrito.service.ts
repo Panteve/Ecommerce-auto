@@ -9,12 +9,17 @@ export class CarritoService {
   total:number = 0
   carritoJSON: any
   espera:boolean = true
+  existeCarrito:boolean = false
   
   constructor() {
     afterNextRender(()=>{
       this.carritoJSON = sessionStorage.getItem('carrito');
-      if(this.carritoJSON ){
+      this.existeCarrito = this.carritoJSON !== null && this.carritoJSON !== undefined;
+      if(this.existeCarrito){
         this.enCarrito = this.enCarrito = JSON.parse(this.carritoJSON);
+        this.espera = false
+        this.existeCarrito = true
+      }else{
         this.espera = false
       };
       this.cantidadCarrrito()
@@ -35,6 +40,7 @@ export class CarritoService {
         this.enCarrito.push({ ...producto, cantidad })
       }
     }
+    this.existeCarrito = true
     this.cantidadCarrrito()
     this.calcularTotal()
     this.guardarSessionStorage()
