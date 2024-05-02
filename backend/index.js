@@ -14,7 +14,7 @@ app.set("port", process.env.PORT || 3000);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(compression());
-app.use(cors({ origin: "http://localhost:4200" }));
+app.use(cors());//{ origin: "http://localhost:4200" }
 
 //Conexión BD Atlas
 mongoose.connect(process.env.MONGODB_URI)
