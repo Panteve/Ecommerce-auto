@@ -21,7 +21,9 @@ export class AppComponent {
 
   logOut(){
     this.clientService.isLoggedIn = false
-    sessionStorage.clear()
+    sessionStorage.removeItem('info')
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('logged')
     window.location.reload();
   }
 }

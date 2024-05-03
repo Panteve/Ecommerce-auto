@@ -1,6 +1,5 @@
-<section class="">
-    <div class="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div class="relative w-full bg-white rounded-xl  shadow-2xl border sm:max-w-xl xl:p-0 ">
+<section class="flex items-center justify-center px-6 py-8 mx-auto md:h-full lg:py-0">
+        <div class="relative w-full bg-white rounded-xl  shadow-2xl border sm:max-w-xl xl:p-0 my-8 ">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
                     Registrate
@@ -9,21 +8,21 @@
                     <div class="md:flex flex-row justify-between">
                         <div class="form-group w-full md:w-3/6 md:mr-1">
                             <label for="nombre" class="block mb-2 text-sm font-medium ">Nombre completo</label>
-                            <input formControlName="nombre" type="text" name="nombre" id="nombre" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="Jane Doe">
+                            <input formControlName="nombre" type="text" name="nombre" id="nombre" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 focus:bg-black" placeholder="Jane Doe">
                         </div>
                         <div class="form-group w-full md:w-3/6">
                             <label for="documento" class="block mb-2 text-sm font-medium ">Documento</label>
-                            <input formControlName="documento" type="number" name="documento" id="documento" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="9788561">
+                            <input formControlName="documento" type="number" name="documento" id="documento" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 focus:bg-black" placeholder="9788561">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="correo" class="block mb-2 text-sm font-medium">E-mail</label>
-                        <input formControlName="correo" type="email" name="correo" id="correo" placeholder="janeDoe@example.com" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black">
+                        <input formControlName="correo" type="email" name="correo" id="correo" placeholder="janeDoe@example.com" class="text-white sm:text-sm rounded-lg block w-full p-2.5 focus:bg-black">
                     </div>
                     <div class="md:flex md:flex-row md:justify-between">
                         <div class="form-group w-full md:w-3/6 md:mr-1 ">
                             <label for="ciudad" class="block mb-2 text-sm font-medium">Ciudad</label>
-                            <select formControlName="ciudad" name="ciudad" class="select select-bordered select-sm w-full max-w-xs text-white text-sm rounded-lg block h-10 bg-neutral-700 hover:bg-black " id="ciudad">
+                            <select formControlName="ciudad" name="ciudad" class="select select-bordered select-sm w-full max-w-xs text-white text-sm rounded-lg block h-10 bg-neutral-700" id="ciudad">
                                 <option value="" disabled selected hidden>-</option>
                                 <option value="Armenia">Armenia</option>
                                 <option value="Barranquilla">Barranquilla</option>
@@ -60,12 +59,12 @@
                         </div>
                         <div class="form-group w-full md:w-3/6">
                             <label for="telefono" class="block mb-2 text-sm font-medium ">Telefono</label>
-                            <input formControlName="telefono" type="number" name="telefono" id="telefono" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" placeholder="300968845">
+                            <input formControlName="telefono" type="number" name="telefono" id="telefono" class="border text-white sm:text-sm rounded-lg block w-full p-2.5 focus:bg-black" placeholder="300968845">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="direccion" class="block mb-2 text-sm font-medium">Direccion</label>
-                        <input formControlName="direccion" type="text" name="direccion" id="direccion" placeholder="Cra 7 # 107-89" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black">
+                        <input formControlName="direccion" type="text" name="direccion" id="direccion" placeholder="Cra 7 # 107-89" class="text-white sm:text-sm rounded-lg block w-full p-2.5 focus:bg-black">
                     </div>
                     <div>
                         <div class="form-group flex flex-row justify-between">
@@ -84,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input formControlName="contrasena" type="password" name="contrasena" id="contrasena" placeholder="•••••••••" class="text-white sm:text-sm rounded-lg block w-full p-2.5 hover:bg-black" [pattern]="'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$'">
+                        <input formControlName="contrasena" type="password" name="contrasena" id="contrasena" placeholder="•••••••••" class="text-white sm:text-sm rounded-lg block w-full p-2.5 focus:bg-black" [pattern]="'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$'">
                     </div>
                     @if (clienteExiste){
                         <div class="toast toast-end toast-middle md:mr-6 ">
@@ -113,5 +112,4 @@
                 </form>
             </div>
         </div>
-    </div>
 </section>
