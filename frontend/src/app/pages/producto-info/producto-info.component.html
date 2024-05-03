@@ -6,7 +6,7 @@
             </div>
         </div>
     }@else{
-        <div class="flex flex-row gap-4 mx-5 my-6 lg:w-6/12 max-h-[700px] bg-white rounded-xl p-3 ">
+        <div class="flex flex-row gap-4 mx-5 my-6 lg:w-6/13 max-h-[700px] bg-white rounded-xl p-3 ">
             <div class="flex flex-col gap-2 w-3/4 bg-black p-2 rounded-xl overflow-auto ">
                 @for (imagen of producto.imagen; track $index) {
                 <div class="bg-white p-1.5 rounded-lg shadow-lg active:opacity-45"  [ngClass]="{'opacity-50': imageSelected === imagen}"  (mouseover)="seleccionado(imagen)">
@@ -19,7 +19,39 @@
             </section>
         </div>
         <aside class="bg-white rounded-lg shadow-md h-fit lg:w-1/3 py-3 px-7 md:mx-5 md:my-6 mx-2 my-2">
-        
+            <h1 class="font-bold text-3xl">{{producto?.nombre}}</h1>
+            <h2 class="font-semibold text-2xl text-amber-600 mb-3">{{producto?.proveedor}}</h2>
+            <h3 class="font-medium text-lg mb-3">{{producto?.precio * producto?.cantidad | currency:'':'symbol':'1.0-0'}}</h3>
+            <select class="select  w-full select-bordered text-sm mb-4" name="cantidad" id="cantidad" (change)="onChange($event)">
+                <option value="1" selected disabled>Selecciona la cantidad</option>
+                @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
+                    <option value="{{i}}" [selected]="i == producto?.cantidad">{{i}}</option>
+                }
+            </select>
+            <button class="btn bg-black w-full hover:border-blue-700 hover:bg-blue-700" (click)="agregarAlCarrito()">
+                <h1 class="text-white font-medium text-base ">
+                    Agregar al carrito de compras
+                </h1>
+                <img src="/assets/add-to-cart-svgrepo-com.svg" alt="Agregar a carrito de compras" width="40" height="40" >
+            </button>
+            <h4 class="font-bold my-5">Envio totalmente gratis</h4>
+            <span>
+                <h1 class="font-semibold font-mono text-left mb-2">DESCRIPCION:</h1>
+                <p class="mb-4">{{producto?.descripcion}}</p>
+            </span>
         </aside>
+        @if (agregado) {
+            <div class="toast toast-end toast-middle md:mr-6">
+                <div class="indicator">
+                    <span class="indicator-item badge bg-red-500 border-red-500 hover:cursor-pointer hover:bg-red-300 hover:border-red-300" (click)="agregado = false">X</span> 
+                    <div class="alert alert-info bg-black border-black text-white font-semibold hover:cursor-pointer hover:bg-slate-300 hover:border-slate-300" (click)="navegarAlCarrito()" >
+                        <span>
+                            <h1>Producto agregado al carrito.</h1>
+                            <h2 class="text-xs text-center">(Click para ver carrito)</h2>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            }
         }
 </section>

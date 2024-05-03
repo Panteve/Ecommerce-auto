@@ -32,7 +32,7 @@ export class CarritoComponent {
     return this.carritoService.total
   }
 
-
+  
   
 
 

@@ -35,6 +35,9 @@ export class CarritoService {
       if(index !== -1){
         if(this.enCarrito[index].cantidad < 10){
         this.enCarrito[index].cantidad += cantidad
+          if(this.enCarrito[index].cantidad > 10){
+            this.enCarrito[index].cantidad = 10
+          }
         }
       }else{
         this.enCarrito.push({ ...producto, cantidad })

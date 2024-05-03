@@ -30,6 +30,8 @@ export class ProductosComponent implements OnInit {
     })
   }
 
+  
+
   agregarCarrito(producto:any, cantidad:number){
     this.carritoService.agregarAlCarrito(producto, cantidad)
   }
