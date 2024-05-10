@@ -32,7 +32,7 @@
           <span class="font-bold text-lg">{{carritoService.numeroEnCarrito}} productos</span>
           <span class="text-info">Total: @if (carritoService.total < 15000000) { {{carritoService.total | currency:'':'symbol':'1.0-0' }} }@else{ +$15M }</span>
           <div class="card-actions">
-            <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 font-bold " routerLink="/carrito">Ver carrito</button>
+            <button class="btn btn-primary btn-block bg-orange-400 border-orange-400 hover:bg-orange-500 hover:border-orange-500 font-bold text-white " routerLink="/carrito">Ver carrito</button>
           </div>
         </div>
       </div>
