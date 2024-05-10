@@ -40,7 +40,12 @@ pedidoCtrl.createPedido = async (req, res) =>{
         let total = 0;
 
         for (const productoPedido of productosPedido) {
-            const producto = await Producto.findOne({ refproducto: productoPedido.producto });
+            const producto = await Producto.findOne({
+                $or:[
+                    {refproducto: productoPedido.producto},
+                    {_id: productoPedido.producto},  
+                ]
+            });
             
             if (!producto) {
                 return res.json({
@@ -75,7 +80,6 @@ pedidoCtrl.createPedido = async (req, res) =>{
         }});
         res.json({
             status: 'Pedido creado exitosamente',
-            data: data
         })
     }catch(error){
         res.json({

@@ -1,9 +1,14 @@
 import { Injectable, afterNextRender } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ClienteService } from './cliente.service';
+import { PedidoService } from './pedido.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
+
+
   enCarrito: any[] = [];
   numeroEnCarrito:number = 0
   total:number = 0
@@ -11,7 +16,12 @@ export class CarritoService {
   espera:boolean = true
   existeCarrito:boolean = false
   
-  constructor() {
+
+  constructor(
+    private http: HttpClient, 
+    private clienteService: ClienteService,
+    private pedidoService: PedidoService
+  ){
     afterNextRender(()=>{
       this.carritoJSON = sessionStorage.getItem('carrito');
       this.existeCarrito = this.carritoJSON !== null && this.carritoJSON !== undefined;
@@ -50,13 +60,26 @@ export class CarritoService {
   }
 
 
+  crearPedido(){
+    if(this.clienteService.isLoggedIn){
+    const pedido:Array<object> =  []
+    this.enCarrito.forEach((producto)=>{
+      pedido.push({producto: producto._id, cantidad: producto.cantidad})
+    })
+    this.pedidoService.crearPedido(pedido)
+    this.vaciarCarrito()
+    }
+  }
 
   eliminarDelCarrito(index: number) {
     this.enCarrito.splice(index, 1);
   }
 
   vaciarCarrito() {
+    sessionStorage.removeItem('carrito')
     this.enCarrito = [];
+    this.numeroEnCarrito = 0
+    this.total = 0
   }
 
   calcularTotal(){

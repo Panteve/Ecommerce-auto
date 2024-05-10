@@ -14,6 +14,7 @@ export class CarritoComponent {
   iva:number = 0
   descuento:number = 0
   total:number = 0  
+ 
 
   constructor(public carritoService: CarritoService) { 
     
@@ -30,6 +31,15 @@ export class CarritoComponent {
     this.descuento = subtotal * 0.30
     this.total = subtotal + this.iva - this.descuento
     return this.carritoService.total
+  }
+
+  hacerPedido(){
+    this.carritoService.crearPedido()
+  }
+
+  vaciarCarrito(){
+    this.carritoService.vaciarCarrito()
+    window.location.reload()
   }
 
   

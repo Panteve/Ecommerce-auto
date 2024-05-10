@@ -24,7 +24,7 @@ export class PedidoInfoComponent {
   ){}
 
   ngAfterContentInit(): void {
-    if(this.clienteService.isLoggedIn){
+    if(!this.clienteService.isLoggedIn){
        this.router.navigate([''])
     }
    }
