@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet} from '@angular/router'
+import { Router, RouterLink, RouterOutlet} from '@angular/router'
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { ClienteService } from '@services/cliente.service';
 import { CarritoService } from '@services/carrito.service';
@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(
     public carritoService: CarritoService,
     public clientService: ClienteService,
-
+    private router: Router
   ){}
 
   logOut(){
@@ -24,7 +24,7 @@ export class AppComponent {
     sessionStorage.removeItem('info')
     sessionStorage.removeItem('token')
     sessionStorage.removeItem('logged')
-    window.location.reload();
+    window.location.reload()
   }
 }
 

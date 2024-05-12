@@ -105,6 +105,38 @@ productoCtrl.getUnicoProductos = async (req,res) =>{
     }
 }
 
+//Conseguir varios productos por una lista de referencias
+productoCtrl.getVariosProductos = async (req,res) =>{
+    try{
+        let refproductos = req.query.refproducto;
+
+        if (typeof refproductos === 'string') {
+            refproductos = refproductos.split(',');
+        }else{
+            return res.json({
+                status: 'Referencias no validas'
+            })
+        }
+        const productosVarios = await Producto.find({
+            _id: { $in: refproductos }
+        })
+        if(productosVarios && productosVarios.length > 0){
+            res.json(productosVarios)
+        }else {
+            res.json({
+                status:'Productos no existen'
+            })
+        }
+
+    }catch(error){
+        res.json({
+            status:  'Error al encontrar productos',
+            error: error.message
+        })
+
+    }
+}
+
 //Actualizar admin
 productoCtrl.editarProductos = async (req,res)=>{
     try{  const producoEdit = { 

@@ -2,6 +2,7 @@ import { CurrencyPipe, NgClass } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CarritoService } from '@services/carrito.service';
+import { ClienteService } from '@services/cliente.service';
 import { ProductosService } from '@services/productos.service';
 
 @Component({
@@ -17,6 +18,8 @@ export class ProductoInfoComponent implements OnInit{
 
    agregado:boolean = false
    espera:boolean = true
+   masDe10:boolean = false
+   logueado: boolean = this.clienteService.isLoggedIn;
 
    selected:number = 0
    index: number = 0
@@ -26,7 +29,8 @@ export class ProductoInfoComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
     private productoService: ProductosService,
-    private carritoService: CarritoService
+    private carritoService: CarritoService,
+    private clienteService: ClienteService
   ){}
  
   
@@ -35,8 +39,8 @@ export class ProductoInfoComponent implements OnInit{
       let id = params['refproducto'] 
       this.productoService.getUnicoProducto(id).subscribe(producto => {
         this.producto = {...producto[0], cantidad:this.cantidad}
-        this.espera = false
         this.imageSelected = this.producto?.imagen[0]
+        this.espera = false
         });
     
       });
@@ -49,9 +53,18 @@ export class ProductoInfoComponent implements OnInit{
 
     agregarAlCarrito(){
       this.carritoService.agregarAlCarrito(this.producto, this.producto?.cantidad)
-      this.agregado = true
+      if(this.carritoService.masDe10){
+        this.masDe10 = true
+        setTimeout(() => {
+          this.masDe10 = false;
+        }, 4000);
+      }else{
+        this.agregado = true
+        setTimeout(() => {
+          this.agregado = false;
+        }, 4000);
+      }
       this.producto.cantidad = 1
-      
     }
   
     seleccionado(imagen:string){

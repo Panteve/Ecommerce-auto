@@ -1,5 +1,4 @@
 import { Injectable, afterNextRender } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ClienteService } from './cliente.service';
 import { PedidoService } from './pedido.service';
 
@@ -8,7 +7,7 @@ import { PedidoService } from './pedido.service';
 })
 export class CarritoService {
 
-
+  masDe10:boolean = false
   enCarrito: any[] = [];
   numeroEnCarrito:number = 0
   total:number = 0
@@ -18,7 +17,6 @@ export class CarritoService {
   
 
   constructor(
-    private http: HttpClient, 
     private clienteService: ClienteService,
     private pedidoService: PedidoService
   ){
@@ -43,11 +41,10 @@ export class CarritoService {
       this.enCarrito[index].cantidad = cantidad
     }else{
       if(index !== -1){
-        if(this.enCarrito[index].cantidad < 10){
         this.enCarrito[index].cantidad += cantidad
-          if(this.enCarrito[index].cantidad > 10){
-            this.enCarrito[index].cantidad = 10
-          }
+        if(this.enCarrito[index].cantidad >= 10){
+          this.enCarrito[index].cantidad = 10     
+          this.masDe10 = true
         }
       }else{
         this.enCarrito.push({ ...producto, cantidad })

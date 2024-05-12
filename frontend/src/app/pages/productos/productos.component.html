@@ -1,4 +1,4 @@
-<section class="sm:h-auto md:h-screen w-auto" id="background">
+<section class="h-screen w-auto" id="background">
     @if (espera) {<div class="flex justify-center items-center h-full">
         <div class="bg-gray-200 w-32 h-32 flex justify-center rounded-lg">
             <span class="loading loading-spinner loading-lg"></span>
@@ -25,6 +25,32 @@
                             </div>
                         </div>
             }</div>
+            @if (agregado){
+                <div class="toast toast-end toast-middle md:mr-6">
+                    <div class="indicator">
+                        <span class="indicator-item badge bg-red-500 border-red-500 hover:cursor-pointer hover:bg-red-300 hover:border-red-300" (click)="agregado = false">X</span> 
+                        <div class="alert alert-info bg-black border-black text-white font-semibold hover:cursor-pointer hover:bg-slate-300 hover:border-slate-300" (click)="navegarAlCarrito()" >
+                            <span>
+                                <h1>Producto agregado al carrito.</h1>
+                                <h2 class="text-xs text-center">(Click para ver carrito)</h2>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }@else if(masDe10){
+                <div class="toast toast-end toast-middle md:mr-6">
+                    <div class="indicator">
+                        <span class="indicator-item badge bg-red-500 border-red-500 hover:cursor-pointer hover:bg-red-300 hover:border-red-300" (click)="masDe10 = false">X</span> 
+                        <div class="alert alert-info bg-black border-black text-white font-semibold hover:cursor-pointer hover:bg-slate-300 hover:border-slate-300" (click)="navegarAlCarrito()" >
+                            <span>
+                                <h1 class="text-center">Lo sentimos, has alcanzado el límite</h1>
+                                <h1 class="text-center">de cantidad por producto.</h1>
+                                <h2 class="text-xs text-center">(Click para ver carrito)</h2>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
 }
 </section>
 

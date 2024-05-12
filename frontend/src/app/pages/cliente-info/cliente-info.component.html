@@ -50,7 +50,7 @@
                             @for (pedido of clienteService.cliente?.pedidos | paginate: {itemsPerPage: 4, currentPage: page}; track pedido._id) {
                             <tr class="hover:bg-gray-200 cursor-pointer" [routerLink]="['/pedido', pedido._id]">
                                 <td class="px-4 py-2">{{ pedido.refpedido }}</td>
-                                <td class="px-4 py-2">{{ pedido.fecha | date:'dd/M/yyyy h:mm:ss a' }}</td>
+                                <td class="px-4 py-2">{{ pedido.fecha | date:'dd/M/yyyy' }}</td>
                                 <td class="px-4 py-2">{{ pedido.total | currency:'':'symbol':'1.0-0' }}</td>
                             </tr>
                             }

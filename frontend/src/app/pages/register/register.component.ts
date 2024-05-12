@@ -57,6 +57,9 @@ constructor(
         if(response.error === 'Existe'){
           this.responseError = response.message
           this.clienteExiste = true
+          setTimeout(() => {
+            this.clienteExiste = false;
+          }, 4000);
         }else{
           this.clienteService.loginCliente(formData.documento, formData.contrasena).subscribe(response => {
             this.router.navigate(['/'])
@@ -65,6 +68,9 @@ constructor(
       }) 
     }else{
       this.invalidForm = true
+      setTimeout(() => {
+        this.invalidForm = false;
+      }, 4000);
 
     }
   }
