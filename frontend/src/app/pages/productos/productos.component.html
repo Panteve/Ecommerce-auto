@@ -1,4 +1,4 @@
-<section class="h-screen w-auto" id="background">
+<section class="md:h-screen w-auto" [ngClass]="{'h-screen': espera === true , 'h-auto': espera === false}" id="background">
     @if (espera) {<div class="flex justify-center items-center h-full">
         <div class="bg-gray-200 w-32 h-32 flex justify-center rounded-lg">
             <span class="loading loading-spinner loading-lg"></span>
@@ -7,7 +7,7 @@
 }@else{<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
         @for (producto of productos; track producto._id ) {
                         <div class="bg-white rounded-lg overflow-hidden shadow-md mx-4 my-2">
-                            <img [ngSrc]=" producto.imagen[0] " alt="{{ producto.nombre }}" width="900" height="666" routerLink="/productos/{{producto._id}}" class="w-full h-72 object-cover hover:cursor-pointer" priority="">
+                            <img [ngSrc]=" producto.imagen[0] " alt="{{ producto.nombre }}" width="900" height="666" routerLink="/productos/{{producto._id}}" class="w-full h-72 object-cover hover:cursor-pointer aspect-auto" priority="">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2 hover:cursor-pointer" routerLink="/productos/{{producto._id}}">{{ producto.nombre }}</h3>
                                 <p class="text-amber-600 font-medium">{{producto.proveedor}}</p>
@@ -26,7 +26,7 @@
                         </div>
             }</div>
             @if (agregado){
-                <div class="toast toast-end toast-middle md:mr-6">
+                <div class="toast toast-start md:toast-end toast-middle md:mr-6">
                     <div class="indicator">
                         <span class="indicator-item badge bg-red-500 border-red-500 hover:cursor-pointer hover:bg-red-300 hover:border-red-300" (click)="agregado = false">X</span> 
                         <div class="alert alert-info bg-black border-black text-white font-semibold hover:cursor-pointer hover:bg-slate-300 hover:border-slate-300" (click)="navegarAlCarrito()" >

@@ -80,6 +80,7 @@ pedidoCtrl.createPedido = async (req, res) =>{
         }});
         res.json({
             status: 'Pedido creado exitosamente',
+            data: data._id
         })
     }catch(error){
         res.json({

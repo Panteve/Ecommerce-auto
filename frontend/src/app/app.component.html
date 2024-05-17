@@ -8,18 +8,38 @@
   </div>
     <div class="flex-none sm:hidden">
     <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle ">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle" [ngClass]="{'mr-4': clientService.isLoggedIn === true}">
         <img src="../assets/menu-alt-1-svgrepo-com.svg" class="h-12 w-12" >
       </div>
       <ul tabindex="0" class="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><a routerLink="/carrito">Carrito</a></li>
         <li><a routerLink="/productos">Productos</a></li>
-        <li><a routerLink="/mi-cuenta">Mi cuenta</a></li>
+        @if (!clientService.isLoggedIn) {
+          <li><a routerLink="/login">Iniciar sesion</a></li>
+        }
       </ul>
     </div>
-  </div>
+      @if(clientService.isLoggedIn){
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="rounded-full w-auto h-auto">
+              <img alt="Imagen de usuario" src="../assets/usuario (1) (1).avif" width="50" height="50" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li routerLink="/mi-cuenta">
+              <a class="justify-between">Mi cuenta
+                <span class="badge border-none"><img ngSrc="../assets/configuration-with-gear-svgrepo-com.svg" width="15" height="15"></span>
+              </a>
+            </li>
+            <li><a (click)="logOut()">Cerrar sesion</a></li>
+          </ul>
+        </div>
+      }
+    </div>
+
+
   <div class=" hidden md:flex md:items-center md:ml-6">
-    
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle bg-black ">
         <div class="indicator">

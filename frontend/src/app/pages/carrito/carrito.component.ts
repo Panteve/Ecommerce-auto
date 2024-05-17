@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
 import { CurrencyPipe, NgClass, NgOptimizedImage } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { PedidoService } from '@services/pedido.service';
 
 @Component({
   selector: 'app-carrito',
@@ -11,14 +12,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
+  pagoExitoso: boolean = false
   iva:number = 0
   descuento:number = 0
   total:number = 0  
  
 
-  constructor(public carritoService: CarritoService) { 
+  constructor(
     
-  }
+    public carritoService: CarritoService,
+    public pedidoService: PedidoService
+  ) {}
 
   onChange(event: Event, producto: any) {
     const newValue = (event.target as HTMLInputElement).value;
@@ -40,6 +44,12 @@ export class CarritoComponent {
   vaciarCarrito(){
     this.carritoService.vaciarCarrito()
     window.location.reload()
+  }
+
+
+
+  ngOnDestroy(){
+    this.pedidoService.pedidoExitoso = false
   }
 
   

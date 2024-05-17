@@ -1,7 +1,9 @@
 import { Injectable, afterNextRender } from '@angular/core';
 import { ClienteService } from './cliente.service';
 import { PedidoService } from './pedido.service';
+import { Router } from '@angular/router';
 
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +19,7 @@ export class CarritoService {
   
 
   constructor(
+    private router: Router,
     private clienteService: ClienteService,
     private pedidoService: PedidoService
   ){
@@ -33,6 +36,7 @@ export class CarritoService {
       this.cantidadCarrrito()
       this.calcularTotal()
     })
+
   }
 
   agregarAlCarrito(producto: any, cantidad:number, desdeCarrito?:boolean) {
@@ -59,11 +63,21 @@ export class CarritoService {
 
   crearPedido(){
     if(this.clienteService.isLoggedIn){
+     this.espera = true
     const pedido:Array<object> =  []
     this.enCarrito.forEach((producto)=>{
       pedido.push({producto: producto._id, cantidad: producto.cantidad})
     })
     this.pedidoService.crearPedido(pedido)
+    .subscribe((res) => {
+      this.espera = false
+      this.clienteService.actualizarGeneracionPedido()
+      this.existeCarrito = false
+      this.pedidoService.pedidoExitoso = true
+      setTimeout(()=>{
+      this.router.navigate(['/pedido/'+res?.data]);
+      }, 2000)
+    });
     this.vaciarCarrito()
     }
   }

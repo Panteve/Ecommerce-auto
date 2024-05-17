@@ -35,7 +35,7 @@
             </div>
         </div>
         <aside class="md:ml-10 bg-white rounded-lg shadow-md lg:w-2/5 min-h-96 max-h-fit text-center">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8 items-end mb-5">
                 <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">Pedidos hechos</h1>
                 <div class="overflow-x-auto">
                     <table class="table-auto w-full">
@@ -59,6 +59,7 @@
                 </div>
             </div>
             @if (clienteService.cliente?.pedidos.length >= 4) {
-            <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>}
+                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            }
         </aside>
 </section>
