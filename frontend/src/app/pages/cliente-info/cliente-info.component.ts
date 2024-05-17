@@ -8,7 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-cliente-info',
   standalone: true,
-  imports: [DatePipe,RouterLink,NgxPaginationModule, CurrencyPipe ],
+  imports: [DatePipe,RouterLink,NgxPaginationModule, CurrencyPipe],
   templateUrl: './cliente-info.component.html',
   styleUrl: './cliente-info.component.css'
 })

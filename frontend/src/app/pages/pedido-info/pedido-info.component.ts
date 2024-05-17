@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PedidoService } from '@services/pedido.service';
-import { CurrencyPipe, DatePipe, NgOptimizedImage } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass, NgOptimizedImage } from '@angular/common';
 import { ClienteService } from '@services/cliente.service';
 import { ProductosService } from '@services/productos.service';
 
@@ -9,7 +9,7 @@ import { ProductosService } from '@services/productos.service';
 @Component({
   selector: 'app-pedido-info',
   standalone: true,
-  imports: [DatePipe,CurrencyPipe, NgOptimizedImage, RouterLink],
+  imports: [DatePipe,CurrencyPipe, NgOptimizedImage, RouterLink, NgClass],
   templateUrl: './pedido-info.component.html',
   styleUrl: './pedido-info.component.css'
 })
@@ -27,6 +27,10 @@ export class PedidoInfoComponent {
     private route: ActivatedRoute,
     public pedidoService: PedidoService
   ){
+    
+  }
+
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       let id = params['refpedido'] 
       this.pedidoService.unicoPedido(id).subscribe(pedido => {
@@ -43,10 +47,6 @@ export class PedidoInfoComponent {
         })     
       });
     });
-  }
-
-  ngOnInit(): void {
-    
   }
 
 }

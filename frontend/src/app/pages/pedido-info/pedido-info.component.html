@@ -1,4 +1,4 @@
-<section class="h-screen flex flex-col items-center" id="fondo">
+<section class="flex flex-col items-center" [ngClass]="{'h-auto': espera === true , 'h-screen': espera === false}" [ngClass]="{'h-auto': productos.length > 2, 'h-screen': productos.length <= 2}" id="fondo">
     @if (espera || !logueado){
         <div class="flex justify-center items-center h-full">
             <div class="bg-gray-200 w-32 h-32 flex justify-center rounded-lg">
@@ -24,29 +24,28 @@
             </tbody>
         </table>
     </div>
-    <div class="bg-white w-4/5 h-4/5 rounded-2xl shadow-md">
+    <div class="bg-white rounded-2xl shadow-md md:mx-5 md:my-6 mx-4 my-2 lg:w-4/5 h-fit">
         <table class="table table-auto" >
             <tbody>
                 @for (producto of productos; track producto._id) {
                     <tr>
                         <td class="flex">
-                            <img [ngSrc]="producto?.imagen[0]" [alt]="producto?.nombre" width="500" height="500" class="hover:cursor-pointer aspect-auto md:w-60 rounded-xl mr-4" routerLink="/productos/{{producto._id}}" priority="">
+                            <img [src]="producto?.imagen[0]" [alt]="producto?.nombre"  class="hover:cursor-pointer w-40 lg:w-64 rounded-xl mr-4" routerLink="/productos/{{producto._id}}" priority="">
                             <section class="flex flex-col grow">
                                 <div class="flex flex-col gap-3 mt-5 ">
                                     <div class="flex flex-col-reverse md:flex-row  justify-between">
                                         <div class="hover:cursor-pointer" routerLink="/productos/{{producto._id}}">
-                                            <h1 class="font-bold text-xl">{{producto?.nombre}}</h1>
-                                            <h2 class="text-amber-700 font-medium text-lg">{{producto?.proveedor}}</h2> 
-                                            <h4 class="text-gray-500 font-normal text-base">{{(producto?.descripcion).slice(0,30)}}...</h4> 
+                                            <h1 class="font-bold text-xl lg:text-3xl">{{producto?.nombre}}</h1>
+                                            <h2 class="text-amber-700 font-medium text-lg lg:text-xl">{{producto?.proveedor}}</h2> 
+                                            <h4 class="text-gray-500 font-normal text-base lg:text-lg">{{(producto?.descripcion).slice(0,30)}}...</h4> 
                                         </div>
-                                        <span class="text-base font-semibold ">
+                                        <span class="text-base lg:text-xl font-semibold ">
                                             {{producto?.precio * producto?.cantidad | currency:'':'symbol':'1.0-0' }}
                                         </span>
                                     </div>
-                                    <div>
-                                        <p class="font-normal text-lg"><label for="cantidad">Cantidad: {{producto?.cantidad}}</label>
-                                        </p>
-                                        <span class="font-light text-base">Precio unitario: {{producto?.precio | currency:'':'symbol':'1.0-0' }}</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-normal text-base lg:text-lg">Cantidad: {{producto?.cantidad}}</span>
+                                        <span class="font-light text-base lg:text-lg">Precio unitario: {{producto?.precio | currency:'':'symbol':'1.0-0' }}</span>
                                     </div>
                                 </div>     
                             </section>

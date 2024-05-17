@@ -12,6 +12,7 @@ import { CarritoService } from '@services/carrito.service';
   styleUrl: './productos.component.css'
 })
 export class ProductosComponent implements OnInit {
+  
   masDe10:boolean = false
   agregado:boolean = false
   espera = true
@@ -27,9 +28,9 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.productoService.getProductos()
-    .subscribe(response =>{
-      this.espera = false
-      this.productos = response
+    .subscribe(res =>{
+      this.espera = false 
+      this.productos = res
     })
   }
 
