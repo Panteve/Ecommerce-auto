@@ -13,6 +13,7 @@ import { CarritoService } from '@services/carrito.service';
 })
 export class ProductosComponent implements OnInit {
   
+  
   masDe10:boolean = false
   agregado:boolean = false
   espera = true

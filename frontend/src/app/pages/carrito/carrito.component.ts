@@ -12,7 +12,8 @@ import { PedidoService } from '@services/pedido.service';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
-  pagoExitoso: boolean = false
+
+  enCompra:boolean = true  
   iva:number = 0
   descuento:number = 0
   total:number = 0  
