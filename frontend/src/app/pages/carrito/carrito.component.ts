@@ -13,7 +13,7 @@ import { PedidoService } from '@services/pedido.service';
 })
 export class CarritoComponent {
 
-  enCompra:boolean = true  
+  enCompra:boolean = false  
   iva:number = 0
   descuento:number = 0
   total:number = 0  
@@ -40,6 +40,7 @@ export class CarritoComponent {
 
   hacerPedido(){
     this.carritoService.crearPedido()
+    this.enCompra = false
   }
 
   vaciarCarrito(){

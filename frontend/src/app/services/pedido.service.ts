@@ -9,8 +9,6 @@ interface Respuesta {
   status: string;
 }
 
-  
-
 @Injectable({
   providedIn: 'root'
 })

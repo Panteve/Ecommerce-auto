@@ -82,7 +82,7 @@
                 </article>
             </section>
             <section class="flex justify-center pt-4 ">
-                <button class="btn btn-wide bg-black text-white hover:text-black rounded-full" [ngClass]="{'btn-disabled': !carritoService.existeCarrito }" (click)="hacerPedido()" >Pagar</button>
+                <button class="btn btn-wide bg-black text-white hover:text-black rounded-full" [ngClass]="{'btn-disabled': !carritoService.existeCarrito }" (click)="enCompra = true" >Pagar</button>
             </section>
         </div>
         </aside>
@@ -102,20 +102,28 @@
         @if (enCompra) {
             <section class="w-full h-full absolute flex flex-row justify-center">
                 <div class="bg-white opacity-55 w-full h-full absolute z-10"></div>
-                <div class="bg-white w-96 h-96 text-center rounded-2xl shadow-2xl z-20 self-center p-5">
+                <div class="bg-white w-96 h-fit text-center rounded-2xl shadow-2xl z-20 self-center p-5">
                     <h1 class="text-black text-2xl font-bold text-left mb-4">Metodos de pago</h1>
                     <div class="flex flex-col divide-y-2 text-left">
-                        <section class="py-2">
-                            <img src="../../../assets/angular.svg" class="h-6 w-6 inline-block mr-2">
-                            <h1 class="inline-block">Tarjeta de credito/debito</h1>
+                        <section class="py-1 hover:cursor-pointer hover:opacity-65" (click)="hacerPedido()">
+                            <img src="../../../assets/visa.svg" class="h-16 w-16 inline-block mr-2">
+                            <h1 class="inline-block font-semibold text-lg">Tarjeta de credito</h1>
                         </section>
-                        <section class="py-2">
-                            <img src="../../../assets/angular.svg" class="h-6 w-6 inline-block mr-2">
-                            <h1 class="inline-block">Pagos PSE</h1>
+                        <section class="py-1 hover:cursor-pointer hover:opacity-65" (click)="hacerPedido()">
+                            <img src="../../../assets/mastercard.svg" class="h-16 w-16 inline-block mr-2">
+                            <h1 class="inline-block font-semibold text-lg">Tarjeta de debito</h1>
                         </section>
-                        <section class="py-2">
-                            <img src="../../../assets/angular.svg" class="h-6 w-6 inline-block mr-2">
-                            <h1 class="inline-block">Efecty</h1>
+                        <section class="py-1 hover:cursor-pointer hover:opacity-65" (click)="hacerPedido()">
+                            <img src="../../../assets/logo-pse.avif" class="h-16 w-16 inline-block mr-2">
+                            <h1 class="inline-block font-semibold text-lg">Pagos PSE</h1>
+                        </section>
+                        <section class="py-1 hover:cursor-pointer hover:opacity-65" (click)="hacerPedido()">
+                            <img src="../../../assets/efecty.avif" class="h-16 w-16 inline-block mr-2">
+                            <h1 class="inline-block font-semibold text-lg">Efecty</h1>
+                        </section>
+                        <section class="py-1 hover:cursor-pointer hover:opacity-65" (click)="hacerPedido()">
+                            <img src="../../../assets/paypal.svg" class="h-16 w-16 inline-block mr-2">
+                            <h1 class="inline-block font-semibold text-lg">PayPal</h1>
                         </section>
                     </div>
                 </div>

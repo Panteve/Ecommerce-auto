@@ -2,6 +2,7 @@ import { Injectable, afterNextRender } from '@angular/core';
 import { ClienteService } from './cliente.service';
 import { PedidoService } from './pedido.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
  
 @Injectable({
@@ -79,6 +80,8 @@ export class CarritoService {
       }, 2000)
     });
     this.vaciarCarrito()
+    }else{
+      this.router.navigate(['/login']);
     }
   }
 
