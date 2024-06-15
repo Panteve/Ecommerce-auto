@@ -33,7 +33,7 @@ export class ClienteService{
   }
 
 
-  loginCliente(documento:null,contrasena:string):Observable<any>{
+  loginCliente(documento:any,contrasena:string):Observable<any>{
     return this.http.post(`${this.URL_API}/login`, { documento, contrasena })
       .pipe(
         tap((data: any) => {

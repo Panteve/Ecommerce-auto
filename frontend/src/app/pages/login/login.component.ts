@@ -16,6 +16,8 @@ export class LoginComponent implements AfterContentInit{
   cliente = { documento: null, contrasena: '' };
   data: any
   response: boolean = false
+
+  
   
   constructor(
     private clienteService: ClienteService,
@@ -43,9 +45,21 @@ export class LoginComponent implements AfterContentInit{
       }else{
       this.router.navigate(['/']);
     }
-    }, error => {
-      console.error(error);
     });
   }
 
+  loginInvitado(){
+    const documento = 9788561
+    const contrasena = "Jd1234567"
+    this.clienteService.loginCliente(documento, contrasena)
+    .subscribe(response => {
+      if(response.status){
+        this.response = true
+        this.cliente.documento = null;
+        this.cliente.contrasena = '';
+      }else{
+      this.router.navigate(['/']);
+    }
+    });
+  }
 }
