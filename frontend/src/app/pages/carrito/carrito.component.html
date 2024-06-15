@@ -11,7 +11,7 @@
                 <h1 class="text-2xl font-bold leading-tight tracking-tight text-center">
                     Carrito de compra
                 </h1>
-                @if (!carritoService.existeCarrito) {<h2 class="text-lg font-semibold text-center leading-tight tracking-tight">No hay productos en tu carrito de compras</h2>}
+                @if (carritoService.enCarrito.length === 0) {<h2 class="text-lg font-semibold text-center leading-tight tracking-tight">No hay productos en tu carrito de compras</h2>}
                 
                 <table class="table table-auto">
                     <tbody>
@@ -40,7 +40,12 @@
                                             </select></p>
                                             <span class="font-light text-base">Precio unitario: {{producto?.precio | currency:'':'symbol':'1.0-0' }}</span>
                                         </div>
-                                    </div>     
+                                    </div>
+                                    <div class="flex flex-row-reverse justify-between">
+                                        <button class="btn md:btn-wide bg-black text-white hover:text-black rounded-full" (click)="eleminarProducto(producto)" >
+                                            <img src="../../../assets/cart-minus-svgrepo-com.svg" alt="Carrito con un menos" class="">Eliminar
+                                        </button> 
+                                        </div>    
                                 </section>
                             </td>
                         </tr>

@@ -30,7 +30,7 @@ export class CarritoService {
       if(this.existeCarrito){
         this.enCarrito = this.enCarrito = JSON.parse(this.carritoJSON);
         this.espera = false
-        this.existeCarrito = true
+ 
       }else{
         this.espera = false
       };
@@ -55,7 +55,6 @@ export class CarritoService {
         this.enCarrito.push({ ...producto, cantidad })
       }
     }
-    this.existeCarrito = true
     this.cantidadCarrrito()
     this.calcularTotal()
     this.guardarSessionStorage()
@@ -85,8 +84,12 @@ export class CarritoService {
     }
   }
 
-  eliminarDelCarrito(index: number) {
-    this.enCarrito.splice(index, 1);
+  eliminarDelCarrito(producto: any) {
+    const index = this.enCarrito.findIndex((p: { _id: string; }) => p._id === producto._id)
+    this.enCarrito.splice(index, 1)
+    this.cantidadCarrrito()
+    this.calcularTotal()
+    this.guardarSessionStorage()
   }
 
   vaciarCarrito() {
