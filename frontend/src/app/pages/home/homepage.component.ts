@@ -1,9 +1,9 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common'
 import { ClienteService } from '@services/cliente.service';
 import { RouterLink } from '@angular/router';
 import { ProductosService } from '@services/productos.service';
-import { Init } from 'v8';
+
 @Component({
   selector: 'app-homepage',
   standalone: true,
@@ -17,12 +17,12 @@ export class HomepageComponent implements OnInit{
   productos:any[] = []
 
   constructor(
-    public clientService: ClienteService,
+    public clienteService: ClienteService,
     private productosService: ProductosService
   ){}
 
   ngOnInit(): void {
-    this.isLogged = this.clientService.isLoggedIn
+    this.isLogged = this.clienteService.isLoggedIn
     this.productosService.getProductos().subscribe(res => {
       this.productos = res
     })

@@ -52,7 +52,7 @@
                     }
                     </tbody>
                 </table>
-                <button class="btn btn-wide text-center bg-black text-white hover:text-black rounded-full sm:mb-4 md:mb-0 sm:" [ngClass]="{'btn-disabled': !carritoService.existeCarrito }" (click)="vaciarCarrito()">
+                <button class="btn btn-wide text-center bg-black text-white hover:text-black rounded-full sm:mb-4 md:mb-0 sm:" [ngClass]="{'btn-disabled': carritoService.enCarrito.length === 0  }" (click)="vaciarCarrito()">
                     <img src="../../../assets/trash-car.svg" alt="Caneca de basura" class="">Vaciar carrito
                 </button>
             </div>
