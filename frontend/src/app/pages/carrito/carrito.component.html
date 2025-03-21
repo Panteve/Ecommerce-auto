@@ -87,7 +87,7 @@
                 </article>
             </section>
             <section class="flex justify-center pt-4 ">
-                <button class="btn btn-wide bg-black text-white hover:text-black rounded-full" [ngClass]="{'btn-disabled': !carritoService.existeCarrito }" (click)="enCompra = true" >Pagar</button>
+                <button class="btn btn-wide bg-black text-white hover:text-black rounded-full" [ngClass]="{'btn-disabled': carritoService.enCarrito.length === 0}" (click)="enCompra = true" >Pagar</button>
             </section>
         </div>
         </aside>

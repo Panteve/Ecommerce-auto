@@ -45,7 +45,6 @@ export class CarritoComponent {
 
   vaciarCarrito(){
     this.carritoService.vaciarCarrito()
-    window.location.reload()
   }
   
   eleminarProducto(producto: any){

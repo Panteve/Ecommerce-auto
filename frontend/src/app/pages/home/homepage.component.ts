@@ -25,7 +25,6 @@ export class HomepageComponent implements OnInit{
     this.isLogged = this.clienteService.isLoggedIn
     this.productosService.getProductos().subscribe(res => {
       this.productos = res
-      console.log(this.productos)
     })
   }
   

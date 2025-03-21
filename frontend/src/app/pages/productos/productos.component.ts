@@ -16,7 +16,7 @@ export class ProductosComponent implements OnInit {
   
   masDe10:boolean = false
   agregado:boolean = false
-  espera = true
+  espera:boolean = true
   productos:any
   numbers = 4
 
@@ -24,14 +24,16 @@ export class ProductosComponent implements OnInit {
     private router: Router,
     private productoService: ProductosService,
     private carritoService: CarritoService
-  ){}
+  ){
+    
+  }
 
 
   ngOnInit(): void {
     this.productoService.getProductos()
     .subscribe(res =>{
-      this.espera = false 
       this.productos = res
+      this.espera = false 
     })
   }
 
@@ -55,4 +57,6 @@ export class ProductosComponent implements OnInit {
     this.router.navigate(['/carrito']);
   }
 
+  
 }
+

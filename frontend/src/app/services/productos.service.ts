@@ -46,7 +46,4 @@ export class ProductosService {
       params: new HttpParams().set('refproducto', productos.join(',')) 
     });
   }
-
-  
-  
 }
